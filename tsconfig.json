@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es5",
+        "declaration": true,
+        "declarationDir": "./dist",
+        "baseUrl": "./src",
+        "paths": {
+            "~/*": ["*"]
+        },
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types", "src/types"],
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ],
+    "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+}
