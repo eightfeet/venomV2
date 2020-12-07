@@ -79,6 +79,7 @@
         var W = window.innerWidth;
         var rate = window.innerWidth/24;
         document.body.style.fontSize = isPC ? '16px' : rate+'px';
+        var emBase = isPC ? 16 : rate;
         var prizesData1 = window.prizes1;
         var prizesData2 = window.prizes2;
         var rand = 6;
@@ -147,7 +148,7 @@
           receiverInfo: receiverInfo,
           checkVerificationCode: checkVerificationCode, // 检查手机验证码
           prizes: prizesData1.slice(0, rand),
-          // emBase: 10,
+          emBase,
           onCancel: function(){console.log('放弃1')},
           onEnsure: function(prize){ console.log('确定中奖结果1！', prize);},
           loading: {
@@ -174,6 +175,7 @@
           cardIdRequest: 3, // 填写收货地址时是否验证身份证: this.cardIdRequest = 1 隐藏身份证，2 验证身份证，3 身份证为空时不验证有填写时验证，4 不验证身份证
           style: window.themedata2,
           start: start2,
+          emBase,
           saveAddress: saveAddress,
           receiverInfo: receiverInfo,
           // checkVerificationCode: checkVerificationCode, // 检查手机验证码

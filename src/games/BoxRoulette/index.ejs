@@ -89,6 +89,7 @@
         var W = window.innerWidth;
         var rate = window.innerWidth/24;
         document.body.style.fontSize = isPC ? '16px' : rate+'px';
+        var emBase = isPC ? 16 : rate;
         var prizesData1 = window.prizes1;
         var prizesData2 = window.prizes2;
         var rand = 10;
@@ -157,7 +158,7 @@
           receiverInfo: receiverInfo,
           checkVerificationCode: checkVerificationCode, // 检查手机验证码
           prizes: prizesData1.slice(0, rand),
-          emBase: 10,
+          emBase,
           onCancel: () => console.log('放弃1'),
           onEnsure: function(prize){ console.log('确定中奖结果1！', prize); },
           loading: {
@@ -176,6 +177,7 @@
           start: start2,
           saveAddress: saveAddress,
           receiverInfo: receiverInfo,
+          emBase,
           // checkVerificationCode: checkVerificationCode, // 检查手机验证码
           prizes: prizesData2,
           failedModalTitle: "...",

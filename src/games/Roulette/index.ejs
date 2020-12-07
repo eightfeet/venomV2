@@ -83,6 +83,7 @@
         var W = window.innerWidth;
         var rate = window.innerWidth/24;
         document.body.style.fontSize = isPC ? '16px' : rate+'px';
+        var emBase = isPC ? 16 : rate;
         var prizesData1 = window.prizes1;
         var prizesData2 = window.prizes2;
         var rand = 10;
@@ -139,7 +140,7 @@
           receiverPhone: "13622841234",
           address: "address"
         };
-  
+        console.log('emBase: ',emBase,)
         var data1 = {
           // targetId: "target1",
           parentId: "parentId1",
@@ -147,6 +148,7 @@
           cardIdRequest: 3, // 填写收货地址时是否验证身份证: this.cardIdRequest = 1 隐藏身份证，2 验证身份证，3 身份证为空时不验证有填写时验证，4 不验证身份证
           style: window.themedata1,
           start: start1,
+          emBase: emBase,
           saveAddress: saveAddress,
           receiverInfo: receiverInfo,
           checkVerificationCode: checkVerificationCode, // 检查手机验证码
@@ -171,6 +173,7 @@
         };
   
         var data2 = {
+          emBase: emBase,
           targetId: "target2",
           parentId: "parentId2",
           playerPhone: "13635219421",
