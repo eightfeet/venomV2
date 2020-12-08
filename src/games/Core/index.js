@@ -54,7 +54,7 @@ class Core {
      *   "prizeName": "蜂胶软胶囊彩盒装（60粒，巴西绿蜂胶）", // 奖品名称
      *   "awardMsg": null, // 中奖提示信息
      *   "gameImg": "./assets/images/card1.png", // 游戏图片
-     *   "prizeImg": "./assets/images/prize1.jpg", // 奖品图片
+     *   "prizeImg": "./assets/images/prize1.jpg", // 奖品图片 
      *   "memo": "奖品的备注说明！" // 奖品备注
      * }
 	 */
