@@ -68,6 +68,7 @@ class Core {
 			onCancel, onEnsure,
 			failedModalTitle, successModalTitle,
 			submitSuccessText, submitAddressText, submitFailedText,
+			animation,
 			emBase,
 			loading,
 			lottery
@@ -91,7 +92,8 @@ class Core {
 			onCancel: this.onCancel(onCancel),
 			submitText: submitSuccessText,
 			onEnsure: this.onEnsure(onEnsure),
-			submitAddressText
+			submitAddressText,
+			animation,
 		});
 
 		this.FailedModal      =

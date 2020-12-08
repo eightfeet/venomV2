@@ -1,0 +1,34 @@
+.startbtn {
+    width: 10em;
+    height: 10em;
+}
+
+
+@keyframes :global(pulse) {
+    0% {
+        background-position-x: 200px;
+    }
+    2% {
+        background-position-x: 0;
+    }
+    4% {
+        background-position-x: -200px;
+    }
+    6% {
+        background-position-x: -400px;
+    }
+    8% {
+        background-position-x: -400px;
+    }
+    10% {
+        background-position-x: -600px;
+    }
+    12% {
+        background-position-x: -800px;
+    }
+    14% {
+        background-position-x: -1000px;
+    }
+    100% {
+    }
+  }
