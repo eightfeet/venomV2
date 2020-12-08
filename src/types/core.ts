@@ -1,3 +1,4 @@
+import { ModalAnimation } from '@eightfeet/modal';
 export interface CoreConfigType {
   /**
    * GameId 默认game-target-时间戳+100以内随机数
@@ -8,27 +9,40 @@ export interface CoreConfigType {
    */
   parentId: string;
   /**
+   * 成功弹窗动画
+   */
+  SuccessModalAnimation?: ModalAnimation
+  /**
    * 皮肤配置
    */
   style: {
     /**
      * 游戏皮肤
      */
-    GameTheme: any;
+    GameTheme?: any;
     /**
      * 成功弹窗皮肤
      */
-    SuccessModalTheme: any;
+    SuccessModalTheme?: any;
     /**
      * 地址填写弹窗皮肤
      */
-    AddressModalTheme: any;
+    AddressModalTheme?: any;
     /**
      * loading皮肤
      */
-    LoadingTheme: any;
+    LoadingTheme?: any;
+    /**
+     * 失败弹窗
+     */
+    FailedModalTheme?: any;
+    /** 
+     * 弱提示 
+     */
+    MessageTheme?: any;
   };
-  outerFrameId;
+  
+  outerFrameId: string;
   /**
    * 启动抽奖方法 必填
    */
@@ -40,7 +54,7 @@ export interface CoreConfigType {
   /**
    * 奖品参数
    */
-  prizes: Prizes;
+  prizes: Prize[];
   /**
    * 参与人电话
    */
@@ -48,15 +62,15 @@ export interface CoreConfigType {
   /**
    * 默认收货人信息
    */
-  receiverInfo: string;
+  receiverInfo: any;
   /**
    * 要求验证身份证
    */
-  cardIdRequest: cardIdRequest;
+  cardIdRequest: any;
   /**
    * 验证参与人电话
    */
-  checkVerificationCode: string;
+  checkVerificationCode: () => Promise<any>;
   /**
    * 取消时的回调（取消中奖结果或取消填写地址）
    */
@@ -112,7 +126,112 @@ export interface CoreConfigType {
   lottery: () => Promise<any>;
 }
 
-export interface Prizes {}
+/**
+ * 游戏奖品数据结构
+ * @export
+ * @interface Prize
+ */
+export interface Prize {
+  /**
+   * 奖品id
+   * @type {number}
+   * @memberof Prize
+   */
+  prizeId: number;
+  /**
+   * 奖品类型 0 未中奖, 1 实物, 2 虚拟
+   * @type {number}
+   * @memberof Prize
+   */
+  prizeType: PrizeType;
+  /**
+   * 领取方式 1：默认；2：填写地址；3：链接类；4：虚拟卡
+   * @type {ReceiveType}
+   * @memberof Prize
+   */
+  receiveType: ReceiveType;
+  /**
+   * 奖品别名
+   * @type {string}
+   * @memberof Prize
+   */
+  prizeAlias: string;
+  /**
+   * 奖品名称
+   * @type {string}
+   * @memberof Prize
+   */
+  prizeName: string;
+  /**
+   * 获奖信息
+   * @type {string}
+   * @memberof Prize
+   */
+  awardMsg: string;
+  /**
+   * 游戏图片
+   * @type {string}
+   * @memberof Prize
+   */
+  gameImg: string;
+  /**
+   * 奖品图片
+   * @type {string}
+   * @memberof Prize
+   */
+  prizeImg: string;
+  /**
+   * 奖品备注
+   * @type {string}
+   * @memberof Prize
+   */
+  memo?: string
+}
+
+/**
+ * 奖品类型
+ * @export
+ * @enum {number}
+ */
+export enum PrizeType {
+  /**
+   * 未中奖
+   */
+  losingLottery = 0,
+  /**
+   * 实物
+   */
+  stuff = 1,
+  /**
+   * 虚拟
+   */
+  virtual = 2,
+}
+
+/**
+ * 领取方式
+ * @export
+ * @enum {number}
+ */
+export enum ReceiveType {
+  /**
+   * 默认
+   */
+  default = 1,
+  /**
+   * 填写地址
+   */
+  address = 2,
+  /**
+   * 链接类
+   */
+  link = 3,
+  /**
+   * 虚拟卡
+   */
+  virtual = 4,
+}
+
 
 export enum cardIdRequest {
   /**
