@@ -1,8 +1,25 @@
-.startbtn {
-    width: 10em;
-    height: 10em;
+@function fixpx($px) {
+    @return ($px/31.25) + em;
+}
+.btnwrap {
+    width: fixpx(240);
+    height: fixpx(240);
+    background-image: url(https://upload-yyj.by-health.com/upload/images/1209142843253.png);
+    background-size: contain;
+    position: absolute;
+    left: 50%;
+    margin-left: fixpx(-120);
+    top: 1.5em;
+    z-index: 3;
 }
 
+.startbtn {
+    position: absolute;
+    left: fixpx(30);
+    top: fixpx(25);
+    right: fixpx(30);
+    bottom: fixpx(38);
+}
 
 @keyframes :global(pulse) {
     0% {
@@ -31,4 +48,54 @@
     }
     100% {
     }
-  }
+}
+
+.root {
+    width: 24em;
+    height: 20em;
+    position: relative;
+}
+
+.box {
+    background-image: url(https://upload-yyj.by-health.com/upload/images/1209145826751.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: fixpx(-10) 0;
+    position: absolute;
+    margin-left: fixpx(-725/2);
+    left: 50%;
+    width: fixpx(725);
+    height: fixpx(450);
+}
+
+.prizebox {
+    border-radius: fixpx(20);
+    position: absolute;
+    left: 50%;
+    top: fixpx(400);
+    width: fixpx(690);
+    height: fixpx(201);
+    margin-left: fixpx(-690/2);
+    background-image: url(https://upload-yyj.by-health.com/upload/images/1209154107004.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.prizes {
+    margin: fixpx(10);
+    display: flex;
+}
+
+.item {
+    flex: auto;
+    font-size: fixpx(20);
+    color: #e8b597;
+    text-align: center;
+    padding-top: fixpx(40);
+    img {
+        width: 3.904rem;
+        display: block;
+        margin: 0 auto;
+    }
+}
+

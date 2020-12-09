@@ -7,6 +7,8 @@ import { Prize, CoreConfigType } from '~/types/core';
 
 import Core from '../Core';
 import s from './index.scss';
+import { renderGame } from './template';
+
 const { dormancyFor } = tools;
 const { createDom } = htmlFactory;
 
@@ -55,7 +57,9 @@ class TreasureBox {
     renderGame = async () => {
         this.gamePrizes = this.prizes;
         await createDom(
-            `<div class="${s.startbtn}">抽奖</div>`,
+            renderGame({
+                prizes: this.gamePrizes
+            }),
             this.targetId,
             this.parentId,
             this.emBase
