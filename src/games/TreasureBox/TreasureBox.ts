@@ -3,25 +3,26 @@ if (window.Promise === undefined) {
 }
 
 import Core from '../Core';
-import {
-    Loading,
-    AddressModal,
-    NoticeModal,
-    validate,
-    Message,
-    Modal,
-    htmlFactory,
-    tools,
-} from '@byhealth/walle';
+import { Loading, htmlFactory, tools } from '@byhealth/walle';
 import s from './index.scss';
+import { Prize } from '~/types/core';
 const { dormancyFor } = tools;
-const { createDom, inlineStyle } = htmlFactory;
+const { createDom } = htmlFactory;
 
 const stamp = new Date().getTime();
 
 let gameTimer = null;
 
-class Game {
+class TreasureBox {
+    targetId: string;
+    emBase: number;
+    prizes: Prize[];
+    GameTheme: { [keys: string]: any };
+    parentId: string;
+    core: Core;
+    Loading: Loading;
+    target: HTMLElement;
+    gamePrizes: Prize[];
     constructor(config) {
         const { style, prizes, targetId, parentId, emBase } = config;
         this.targetId =
@@ -39,12 +40,8 @@ class Game {
             targetId: this.targetId,
         });
         this.Loading = this.core.Loading;
-
         this.target = null;
-        this.prizesRepeats = 6; // 每组奖品重复的次数
-        this.repeats = 1;
         this.gamePrizes = [];
-
         this.renderGame();
     }
 
@@ -53,20 +50,23 @@ class Game {
      * 初始化翻牌模板
      * @memberof Game
      */
-    renderGame = () => {
+    renderGame = async () => {
         this.gamePrizes = this.prizes;
-        return createDom(`<div class="${s.startbtn}">抽奖</div>`, this.targetId, this.parentId, this.emBase )
-            .then(() => {
-                this.target = document.getElementById(this.targetId);
-                return dormancyFor(50);
-            })
-            .then(() => {
-                const startbtn = this.target.querySelector(`.${s.startbtn}`);
-                startbtn.onclick = (e) => {
-                    e.preventDefault();
-                    return this.core.lottery();
-                };
-            });
+        await createDom(
+            `<div class="${s.startbtn}">抽奖</div>`,
+            this.targetId,
+            this.parentId,
+            this.emBase
+        );
+        this.target = document.getElementById(this.targetId);
+        await dormancyFor(50);
+        const startbtn: HTMLButtonElement = this.target.querySelector(
+            `.${s.startbtn}`
+        );
+        startbtn.onclick = (e) => {
+            e.preventDefault();
+            return this.core.lottery();
+        };
     };
 
     distory = () => {
@@ -100,19 +100,11 @@ class Game {
             }
 
             if (prizeIndex !== null) {
-                Promise.resolve()
-                    .then(() => resolve(prize));
+                Promise.resolve().then(() => resolve(prize));
             }
         });
 }
 
-export {
-    Game,
-    NoticeModal,
-    Loading,
-    validate,
-    Message,
-    Modal,
-    AddressModal,
-    inlineStyle,
-};
+export default TreasureBox;
+
+

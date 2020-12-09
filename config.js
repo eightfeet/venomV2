@@ -36,7 +36,12 @@ module.exports = [{
 	template: './games/RedEnvelope/index.ejs'
 },{
 	name: 'treasurebox',
-	path: './games/TreasureBox/index.js',
+	path: './games/TreasureBox/index.ts',
 	templatename: '开宝箱',
 	template: './games/TreasureBox/index.ejs'
+},{
+	name: 'case',
+	path: './games/Case/index.ts',
+	templatename: '用例',
+	template: './games/Case/index.ejs'
 }];

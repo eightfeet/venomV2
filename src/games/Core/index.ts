@@ -65,12 +65,7 @@ class Core {
             MessageTheme,
             LoadingTheme,
         } = style;
-		const stamp = new Date().getTime();
-        this.targetId =
-            targetId ||
-            `game-target-${stamp}${window.Math.floor(
-                window.Math.random() * 100
-            )}`;
+        this.targetId = targetId;
         this.parentId = parentId;
         this.prizes = prizes;
         this.lotteryDrawing = false;

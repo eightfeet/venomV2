@@ -6,18 +6,18 @@
 let scrollTop = 0;
 let scrollLeft = 0;
 
-function handleFocusin() {
+function handleFocusin() : void {
     scrollLeft = document.body.scrollLeft;
     scrollTop = document.body.scrollTop;
 }
 
-function handleFocusout() {
+function handleFocusout() : void {
     setTimeout(() => {
         window.scrollTo(scrollLeft, scrollTop);
     }, 0);
 }
 
-export function fixIosScroll() {
+export function fixIosScroll() : void {
     const { userAgent } = window.navigator;
     if (/\(i[^;]+;( U;)? CPU.+Mac OS X/.test(userAgent)) {
         window.onload = function () {

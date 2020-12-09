@@ -123,7 +123,7 @@ export interface CoreConfigType {
   /**
    * 抽奖
    */
-  lottery: () => Promise<any>;
+  lottery: (prize:Prize) => Promise<any>;
 }
 
 /**
