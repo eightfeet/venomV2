@@ -2,16 +2,18 @@ if (window.Promise === undefined) {
     throw new Error('Promise pollyfill not found.');
 }
 
-import Core from '../Core';
 import { Loading, htmlFactory, tools } from '@byhealth/walle';
+import { Prize, CoreConfigType } from '~/types/core';
+
+import Core from '../Core';
 import s from './index.scss';
-import { Prize } from '~/types/core';
 const { dormancyFor } = tools;
 const { createDom } = htmlFactory;
 
 const stamp = new Date().getTime();
-
 let gameTimer = null;
+
+interface TreasureBoxConfigType extends CoreConfigType {}
 
 class TreasureBox {
     targetId: string;
@@ -23,7 +25,7 @@ class TreasureBox {
     Loading: Loading;
     target: HTMLElement;
     gamePrizes: Prize[];
-    constructor(config) {
+    constructor(config: TreasureBoxConfigType) {
         const { style, prizes, targetId, parentId, emBase } = config;
         this.targetId =
             targetId ||
@@ -48,7 +50,7 @@ class TreasureBox {
     /**
      *
      * 初始化翻牌模板
-     * @memberof Game
+     * @memberof TreasureBox
      */
     renderGame = async () => {
         this.gamePrizes = this.prizes;
@@ -69,6 +71,10 @@ class TreasureBox {
         };
     };
 
+    /**
+     * 销毁
+     * @memberof TreasureBox
+     */
     distory = () => {
         window.clearTimeout(gameTimer);
         this.core.distory();
@@ -78,9 +84,9 @@ class TreasureBox {
      *
      * 开始抽奖
      * @param {Object} prize 所获奖品
-     * @memberof Game
+     * @memberof TreasureBox
      */
-    lottery = (prize) =>
+    lottery: (prize: Prize) => Promise<any> = (prize: Prize) =>
         new Promise((resolve) => {
             let prizeIndex = null;
             // 确认中奖位置
@@ -106,5 +112,3 @@ class TreasureBox {
 }
 
 export default TreasureBox;
-
-
