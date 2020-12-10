@@ -8,6 +8,10 @@ import { Prize, CoreConfigType } from '~/types/core';
 import Core from '../Core';
 import s from './index.scss';
 import { renderGame } from './template';
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/swiper-bundle.css';
 
 const { dormancyFor } = tools;
 const { createDom } = htmlFactory;
@@ -64,6 +68,15 @@ class TreasureBox {
             this.parentId,
             this.emBase
         );
+        console.log('0000');
+        if (this.gamePrizes.length > 4) {
+            console.log(1111111)
+            const swiper = new Swiper(`.${s.prizebox}`, {
+                slidesPerView: 4,
+                loop: true,
+            });
+        }
+        
         this.target = document.getElementById(this.targetId);
         await dormancyFor(50);
         const startbtn: HTMLButtonElement = this.target.querySelector(

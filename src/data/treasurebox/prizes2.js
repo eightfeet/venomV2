@@ -4,7 +4,7 @@ window.prizes2 =[
     "prizeId": 1,
     "prizeType": 1,
     "receiveType": 1,
-    "prizeAlias": "50汤币",
+    "prizeAlias": "50汤币50汤币50汤币50汤币50汤币50汤币",
     "prizeName": "50汤币",
     "awardMsg": null,
     "gameImg": "http://by-health-portal2.oss-cn-beijing.aliyuncs.com/images/20190418145059992.png",

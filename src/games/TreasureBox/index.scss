@@ -90,9 +90,10 @@
     left: 50%;
     width: fixpx(725);
     height: fixpx(450);
+    z-index: 1;
 }
 
-.prizebox {
+.fixprizebox, .prizebox {
     border-radius: fixpx(20);
     position: absolute;
     left: 50%;
@@ -103,17 +104,18 @@
     background-image: url(https://upload-yyj.by-health.com/upload/images/1209154107004.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    overflow: hidden;
 }
 
 .prizes {
     margin: fixpx(10);
     display: flex;
+    .item {
+        flex: auto;
+    }
 }
 
 .item {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
     color: #e8b597;
     text-align: center;
     padding-top: fixpx(26);
@@ -141,15 +143,5 @@
         text-overflow: ellipsis;
         text-align: center;
         margin: fixpx(10) auto 0 auto;
-    }
-}
-
-.prizemin5 {
-    margin: fixpx(10);
-    display: flex;
-    overflow: hidden;
-    .item {
-        flex: none;
-        width: 5.3em;
     }
 }
