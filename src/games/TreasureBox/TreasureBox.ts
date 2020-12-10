@@ -62,15 +62,14 @@ class TreasureBox {
         this.gamePrizes = this.prizes;
         await createDom(
             renderGame({
-                prizes: this.gamePrizes
+                prizes: this.gamePrizes,
+                theme: this.GameTheme,
             }),
             this.targetId,
             this.parentId,
             this.emBase
         );
-        console.log('0000');
         if (this.gamePrizes.length > 4) {
-            console.log(1111111)
             const swiper = new Swiper(`.${s.prizebox}`, {
                 slidesPerView: 4,
                 loop: true,

@@ -4,41 +4,19 @@ window.themedata1 = {
         wrap: {
             zIndex: 10,
         },
-        cardWrap: {
-            padding: '0',
-        },
-        cardInside: {
-            backgroundColor: 'transparent',
-            borderRadius: '0.2em',
-        },
-        cardCover: {
-            borderRadius: '0.2em',
-            backgroundImage: "url('./assets/flip/mailprize.png')",
-            backgroundSize: '100% 100%',
-            backgroundColor: 'transparent',
-        },
-        cardSelected: {
-            backgroundImage: "url('./assets/flip/mailprizeselected.png')",
-            backgroundSize: '100% 100%',
-            backgroundColor: 'transparent',
-            width: '108%',
-            height: '108%',
-            top: '-4%',
-            left: '-4%',
-            zIndex: '50',
-        },
         prizeImage: {
-            backgroundColor: '#fff',
-            border: '1px solid #eee',
-            width: '75%',
-            margin: '10% auto 8% auto',
         },
         prizeTitle: {
             textAlign: 'center',
-            color: '#666',
-            fontSize: '0.8em',
         },
-        modify: [],
+        modify: [
+            {
+                backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1210144422897.png)',
+                width: '25em',
+                height: '49.85em',
+                bottom: '-10.5em'
+            }
+        ],
     },
     FailedModalTheme: {
         overlay: {
@@ -268,7 +246,7 @@ window.themedata1 = {
         },
         footer: {
             height: '4em',
-            paddingTop: '1em'
+            paddingTop: '1em',
         },
         modalTitle: {
             fontWeight: 'bolder',
@@ -377,7 +355,7 @@ window.themedata1 = {
             boxSizing: 'border-box',
             backgroundSize: '100% 100%',
             borderRadius: '100%',
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
         },
         memo: {
             marginBottom: '1.2em',
@@ -388,7 +366,7 @@ window.themedata1 = {
         },
         awardMsg: {
             fontSize: '0.8em',
-            padding: '0 1em'
+            padding: '0 1em',
         },
         modify: [
             {
@@ -429,7 +407,8 @@ window.themedata1 = {
             {
                 width: '200px',
                 height: '200px',
-                backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
+                backgroundImage:
+                    'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
                 backgroundRepeat: 'no-repeat',
                 zIndex: '200',
                 animation: 'pulse 3s steps(1, end) 0.5s infinite',
@@ -438,12 +417,13 @@ window.themedata1 = {
                 transformOrigin: 'left top',
                 left: '-3em',
                 top: '1em',
-                opacity: '0.5'
+                opacity: '0.5',
             },
             {
                 width: '200px',
                 height: '200px',
-                backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
+                backgroundImage:
+                    'url(https://upload-yyj.by-health.com/upload/images/1204110321405.png)',
                 backgroundRepeat: 'no-repeat',
                 zIndex: '200',
                 animation: 'pulse 3s steps(1, end) 1s infinite',
@@ -452,7 +432,7 @@ window.themedata1 = {
                 transformOrigin: 'right bottom',
                 right: '-4em',
                 top: 'auto',
-                bottom: '6em'
+                bottom: '6em',
             },
             {
                 width: '17.056em',
@@ -464,7 +444,7 @@ window.themedata1 = {
                 marginLeft: '-4.464em',
                 left: '42%',
                 top: '6em',
-            }
+            },
         ],
     },
     AddressModalTheme: {

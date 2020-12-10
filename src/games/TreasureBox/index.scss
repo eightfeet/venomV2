@@ -11,8 +11,7 @@
     margin-left: fixpx(-120);
     top: 1.5em;
     animation: heartBeat 3s 100ms infinite;
-    
-    z-index: 3;
+    z-index: 12;
 }
 
 .startbtn {
@@ -90,7 +89,7 @@
     left: 50%;
     width: fixpx(725);
     height: fixpx(450);
-    z-index: 1;
+    z-index: 10;
 }
 
 .fixprizebox, .prizebox {
@@ -105,6 +104,7 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     overflow: hidden;
+    z-index: 10;
 }
 
 .prizes {
@@ -133,6 +133,7 @@
         border-radius: 50%;
         border: 1px solid #ff9406;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     p {
@@ -144,4 +145,11 @@
         text-align: center;
         margin: fixpx(10) auto 0 auto;
     }
+}
+
+
+.modify {
+    position: absolute;
+    pointer-events: none;
+    background-size: 100% auto;
 }
