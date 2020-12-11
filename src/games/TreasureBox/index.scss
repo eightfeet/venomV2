@@ -53,26 +53,26 @@
 
 @keyframes heartBeat {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  
+
     14% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
-  
+
     28% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  
+
     42% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
-  
+
     70% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
-  
+}
+
 .root {
     width: 24em;
     height: 20em;
@@ -92,7 +92,8 @@
     z-index: 10;
 }
 
-.fixprizebox, .prizebox {
+.fixprizebox,
+.prizebox {
     border-radius: fixpx(20);
     position: absolute;
     left: 50%;
@@ -147,9 +148,43 @@
     }
 }
 
-
 .modify {
     position: absolute;
     pointer-events: none;
     background-size: 100% auto;
+}
+
+@keyframes :global(cardflash) {
+    0%{background-position: fixpx(-22500) 0px;}
+    2%{background-position: 0px 0px;}
+    4%{background-position: fixpx(-750) 0px;}
+    6%{background-position: fixpx(-1500) 0px;}
+    8%{background-position: fixpx(-2250) 0px;}
+    10%{background-position: fixpx(-3000) 0px;}
+    12%{background-position: fixpx(-3750) 0px;}
+    14%{background-position: fixpx(-4500) 0px;}
+    16%{background-position: fixpx(-5250) 0px;}
+    18%{background-position: fixpx(-6000) 0px;}
+    20%{background-position: fixpx(-6750) 0px;}
+    22%{background-position: fixpx(-7500) 0px;}
+    24%{background-position: fixpx(-8250) 0px;}
+    26%{background-position: fixpx(-9000) 0px;}
+    28%{background-position: fixpx(-9750) 0px;}
+    30%{background-position: fixpx(-10500) 0px;}
+    32%{background-position: fixpx(-11250) 0px;}
+    34%{background-position: fixpx(-12000) 0px;}
+    36%{background-position: fixpx(-12750) 0px;}
+    38%{background-position: fixpx(-13500) 0px;}
+    40%{background-position: fixpx(-14250) 0px;}
+    42%{background-position: fixpx(-15000) 0px;}
+    44%{background-position: fixpx(-15750) 0px;}
+    46%{background-position: fixpx(-16500) 0px;}
+    48%{background-position: fixpx(-17250) 0px;}
+    50%{background-position: fixpx(-18000) 0px;}
+    52%{background-position: fixpx(-18750) 0px;}
+    54%{background-position: fixpx(-19500) 0px;}
+    56%{background-position: fixpx(-20250) 0px;}
+    58%{background-position: fixpx(-21000) 0px;}
+    60%{background-position: fixpx(-21750) 0px;}
+    62% {background-position: fixpx(-22500) 0px;}
 }

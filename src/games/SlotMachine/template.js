@@ -2,7 +2,6 @@ import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
 const { inlineStyle } = htmlFactory;
 
-
 /**
  *
  * 创建修饰层

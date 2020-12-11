@@ -15,6 +15,16 @@ window.themedata1 = {
                 width: '25em',
                 height: '49.85em',
                 bottom: '-10.5em'
+            },
+            {
+                backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1211151917516.png)',
+                animation: 'cardflash 3s steps(1, end) infinite',
+                backgroundPosition: '-500% -500%',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'auto 100%',
+                width: '24em',
+                height: '10.88em',
+                top: '0'
             }
         ],
     },
