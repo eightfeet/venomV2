@@ -21,9 +21,9 @@ window.themedata1 = {
                 animation: 'cardflash 3s steps(1, end) infinite',
                 backgroundPosition: '-500% -500%',
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'auto 100%',
-                width: '24em',
-                height: '10.88em',
+                backgroundSize: '22500px 100%',
+                width: '750px',
+                height: '340px',
                 top: '0'
             }
         ],

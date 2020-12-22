@@ -45,10 +45,16 @@ export const renderModify = (modify: any[]) => {
     if (!modify || !Array.isArray(modify)) return '';
     return html`
         ${modify.map(
-            (item) =>
-                `<div class="${s.modify}" style="${inlineStyle(
+            (item) =>{
+                if (item.animation) {
+                    item.transform = `scale(${window.innerWidth/750})`,
+                    item.transformOrigin = 'top left'
+                }
+                
+                return `<div class="${s.modify}" style="${inlineStyle(
                     item
                 )}">&nbsp;</div>`
+            }
         )}
     `;
 };
