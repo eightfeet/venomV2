@@ -15,13 +15,13 @@ export const renderGame = ({ prizes, theme }) => {
             <div class="${prizes.length > 4 ? s.prizebox : s.fixprizebox}">
                 <div class="${prizes.length > 4 ? 'swiper-wrapper' : s.prizes}">
                     ${prizes.map(
-                        (item: Prize) =>
+                        (item: Prize, index: number) =>
                             html`<div
                                 class="${prizes.length > 4
                                     ? 'swiper-slide'
                                     : ''} ${s.item}"
                             >
-                                <div class="${s.imgwrap}">
+                                <div class="${s.imgwrap} ${index === 0 ? s.firstimgwrap : ''}">
                                     <img
                                         style="${prizeImageStyle}"
                                         src="${item.gameImg}"

@@ -18,7 +18,7 @@ window.themedata1 = {
             },
             {
                 backgroundImage: 'url(https://upload-yyj.by-health.com/upload/images/1211151917516.png)',
-                animation: 'cardflash 3s steps(1, end) infinite',
+                animation: 'cardflash 2s steps(1, end) infinite',
                 backgroundPosition: '-500% -500%',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '22500px 100%',
