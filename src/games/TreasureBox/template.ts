@@ -1,23 +1,25 @@
 import { html } from 'common-tags';
-import { Prize } from '~/types/core';
+import { Prize, PrizeType } from '~/types/core';
 import { htmlFactory } from '@byhealth/walle';
 import s from './index.scss';
 const { inlineStyle } = htmlFactory;
 
-export const renderGame = ({ prizes, theme }) => {
+export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
     const { wrap, prizeImage, prizeTitle, modify } = theme;
     const wrapStyle = inlineStyle(wrap) || '';
     const prizeImageStyle = inlineStyle(prizeImage) || '';
     const prizeTitleStyle = inlineStyle(prizeTitle) || '';
 
+    const prizesFliter = prizes.filter((item:Prize) => item.prizeType !== PrizeType.losingLottery);
+
     return html`
         <div class="${s.root}" style="${wrapStyle}">
-            <div class="${prizes.length > 4 ? s.prizebox : s.fixprizebox}">
-                <div class="${prizes.length > 4 ? 'swiper-wrapper' : s.prizes}">
-                    ${prizes.map(
+            <div class="${prizesFliter.length > 4 ? s.prizebox : s.fixprizebox}">
+                <div class="${prizesFliter.length > 4 ? 'swiper-wrapper' : s.prizes}">
+                    ${prizesFliter.map(
                         (item: Prize, index: number) =>
                             html`<div
-                                class="${prizes.length > 4
+                                class="${prizesFliter.length > 4
                                     ? 'swiper-slide'
                                     : ''} ${s.item}"
                             >
