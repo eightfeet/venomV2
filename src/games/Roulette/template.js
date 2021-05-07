@@ -32,7 +32,7 @@ function renderModify(modify){
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style, prizes) {
+export function renderGame(style, prizes, id) {
 	const { wrap, modify, gameImg, prizeAlias, needle, lotteryButton, wheel, divide } = style;
 	const prizeLength = prizes.length;
 	const eachDeg = 360 / prizeLength;
@@ -51,19 +51,19 @@ export function renderGame(style, prizes) {
 		const deg = index * eachDeg;
 		dom += `<div class="${s.award}" 
 		style="transform:rotate(${deg + eachDeg/2}deg); -webkit-transform:rotate(${deg + eachDeg/2}deg)">
-			<div class="${s.prizealias}" ${prizeAliasStyle && `style="${prizeAliasStyle}"`}>${element.prizeAlias}</div>
-			<img class="${s.gameimg}" ${gameImgStyle && `style="${gameImgStyle}"`} src="${element.gameImg}" />
-		</div><div class="${s.divide}"  style="transform:rotate(${deg}deg); -webkit-transform:rotate(${deg}deg); ${divideStyle ? divideStyle : ''}"></div>`;
+			<div class="${s.prizealias} ${id}_prizealias" ${prizeAliasStyle && `style="${prizeAliasStyle}"`}>${element.prizeAlias}</div>
+			<img class="${s.gameimg} ${id}_gameImg" ${gameImgStyle && `style="${gameImgStyle}"`} src="${element.gameImg}" />
+		</div><div class="${s.divide} ${id}_divide"  style="transform:rotate(${deg}deg); -webkit-transform:rotate(${deg}deg); ${divideStyle ? divideStyle : ''}"></div>`;
 	}
 	
 	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
-	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
+	<div class="${s.wrap}  ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 		<div class="${s.lottery}">
-			<div class="${s.wheel}"  ${wheelStyle ? `style="${wheelStyle}"` : ''}>
+			<div class="${s.wheel} ${id}_wheel"  ${wheelStyle ? `style="${wheelStyle}"` : ''}>
 				${dom}
 			</div>
 		</div> 
-		<div class="${s.needle}" ${needleStyle ? `style="${needleStyle}"` : ''}>&nbsp;</div>
-		<div class="${s.lotterybutton}" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div>
+		<div class="${s.needle} ${id}_needle" ${needleStyle ? `style="${needleStyle}"` : ''}>&nbsp;</div>
+		<div class="${s.lotterybutton} ${id}_lotterybutton" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div>
 	</div>`;
 }

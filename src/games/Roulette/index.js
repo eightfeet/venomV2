@@ -46,29 +46,25 @@ class Game {
 
 	/**
 	 *
-	 * 初始化翻牌模板
+	 * 初始化转盘模板
 	 * @memberof Game
 	 */
-	renderGame = () => {
-		return createDom(
-			renderGame(this.GameTheme, this.prizes),
+	renderGame = async () => {
+		await createDom(
+			renderGame(this.GameTheme, this.prizes, this.targetId),
 			this.targetId,
 			this.parentId,
 			this.emBase
-		)
-			.then(() => {
-				const target = document.getElementById(this.targetId);
-				target.classList.add(s.target);
-				return dormancyFor(50);
-			})
-			.then(() => {
-				const target = document.getElementById(this.targetId);
-				const lotterybtn = target.querySelector(`.${s.lotterybutton}`);
-				lotterybtn.onclick = (e) => {
-					e.preventDefault();
-					return this.core.lottery();
-				};
-			});
+		);
+		const target = document.getElementById(this.targetId);
+		target.classList.add(s.target);
+		await dormancyFor(50);
+		const target_1 = document.getElementById(this.targetId);
+		const lotterybtn = target_1.querySelector(`.${s.lotterybutton}`);
+		lotterybtn.onclick = (e) => {
+			e.preventDefault();
+			return this.core.lottery();
+		};
 	};
 
 	/**
