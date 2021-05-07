@@ -59,12 +59,12 @@ class Core {
 		} = config;
 		
 		const {
-			SuccessModalTheme,
-			FailedModalTheme,
-			AddressModalTheme,
-			MessageTheme,
-			LoadingTheme
-		} = style;
+			SuccessModalTheme={},
+			FailedModalTheme={},
+			AddressModalTheme={},
+			MessageTheme={},
+			LoadingTheme={}
+		} = style || {};
 		this.targetId = targetId;
 		this.parentId = parentId;
 		this.prizes = prizes;

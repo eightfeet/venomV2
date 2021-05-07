@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@byhealth/walle": "^1.0.11",
+    "@byhealth/walle": "^1.0.13",
     "@types/common-tags": "^1.8.0",
     "common-tags": "^1.8.0",
     "core-js": "^3.2.1",
