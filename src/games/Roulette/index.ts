@@ -89,7 +89,7 @@ class Game {
 	 * @returns
 	 * @memberof Game
 	 */
-	lottery = (prize: Prize, time: string, round: number) => {
+	lottery = (prize: Prize, time?: string, round?: number) => {
 		const { prizeId } = prize || {};
 		const target = document.getElementById(this.targetId);
 		const wheel = target.querySelector(`.${s.lottery}`);

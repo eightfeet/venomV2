@@ -5,7 +5,7 @@ module.exports = [{
 	template: './index.ejs'
 },{
 	name: 'roulette',
-	path: './games/Roulette/index.js',
+	path: './games/Roulette/index.ts',
 	templatename: '大转盘',
 	template: './games/Roulette/index.ejs'
 },{
