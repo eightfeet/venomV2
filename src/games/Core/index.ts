@@ -217,7 +217,7 @@ class Core {
 			})
 			.then((res) => {
 				this.lotteryDrawing = false;
-				if (res.prizeType === PrizeType.losingLottery) {
+				if (res.prizeType === PrizeType.LosingLottery) {
 					return this.showFailedModal(res);
 				}
 				return this.showSuccessModal(res);
@@ -265,7 +265,7 @@ class Core {
 	showSuccessModal = async (prize: Prize) => {
 		const result: any = await this.SuccessModal.showModal(prize);
 		// 1：默认；2：填写地址；3：链接类；4：虚拟卡
-		if (result?.receiveType === ReceiveType.address) {
+		if (result?.receiveType === ReceiveType.Address) {
 			this.AddressModal?.showModal(this.saveAddress, () => {
 				this.showSuccessModal(result);
 			}, () => {});

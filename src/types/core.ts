@@ -36,8 +36,8 @@ export interface CoreConfigType {
      * 失败弹窗
      */
     FailedModalTheme?: any;
-    /** 
-     * 弱提示 
+    /**
+     * 弱提示
      */
     MessageTheme?: any;
   };
@@ -134,10 +134,10 @@ export interface CoreConfigType {
 export interface Prize {
   /**
    * 奖品id
-   * @type {number}
+   * @type {string}
    * @memberof Prize
    */
-  prizeId: number;
+  prizeId: string;
   /**
    * 奖品类型 0 未中奖, 1 实物, 2 虚拟
    * @type {number}
@@ -197,15 +197,15 @@ export enum PrizeType {
   /**
    * 未中奖
    */
-  losingLottery = 0,
+  LosingLottery = 0,
   /**
    * 实物
    */
-  stuff = 1,
+  Stuff = 1,
   /**
    * 虚拟
    */
-  virtual = 2,
+  Virtual = 2,
 }
 
 /**
@@ -217,19 +217,19 @@ export enum ReceiveType {
   /**
    * 默认
    */
-  default = 1,
+  Default = 1,
   /**
    * 填写地址
    */
-  address = 2,
+  Address = 2,
   /**
    * 链接类
    */
-  link = 3,
+  Link = 3,
   /**
    * 虚拟卡
    */
-  virtual = 4,
+  Virtual = 4,
 }
 
 
@@ -237,17 +237,17 @@ export enum cardIdRequest {
   /**
    * 隐藏身份证
    */
-  notDisplayed = "1",
+  NotDisplayed = "1",
   /**
    * 验证身份证
    */
-  requireAndValidation = "2",
+  RequireAndValidation = "2",
   /**
    * 身份证为空时不验证有填写时验证
    */
-  requireAndValidationWhenInput = "3",
+  RequireAndValidationWhenInput = "3",
   /**
    * 不验证身份证
    */
-  neverValidation = "4",
+  NeverValidation = "4",
 }

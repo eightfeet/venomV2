@@ -5,23 +5,23 @@ import s from './index.scss';
 const { inlineStyle } = htmlFactory;
 
 export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
-    const { wrap, prizeImage, prizeTitle, modify } = theme;
-    const wrapStyle = inlineStyle(wrap) || '';
-    const prizeImageStyle = inlineStyle(prizeImage) || '';
-    const prizeTitleStyle = inlineStyle(prizeTitle) || '';
+	const { wrap, prizeImage, prizeTitle, modify } = theme;
+	const wrapStyle = inlineStyle(wrap) || '';
+	const prizeImageStyle = inlineStyle(prizeImage) || '';
+	const prizeTitleStyle = inlineStyle(prizeTitle) || '';
 
-    const prizesFliter = prizes.filter((item:Prize) => item.prizeType !== PrizeType.losingLottery);
+	const prizesFliter = prizes.filter((item:Prize) => item.prizeType !== PrizeType.LosingLottery);
 
-    return html`
+	return html`
         <div class="${s.root}" style="${wrapStyle}">
             <div class="${prizesFliter.length > 4 ? s.prizebox : s.fixprizebox}">
                 <div class="${prizesFliter.length > 4 ? 'swiper-wrapper' : s.prizes}">
                     ${prizesFliter.map(
-                        (item: Prize, index: number) =>
-                            html`<div
+		(item: Prize, index: number) =>
+			html`<div
                                 class="${prizesFliter.length > 4
-                                    ? 'swiper-slide'
-                                    : ''} ${s.item}"
+		? 'swiper-slide'
+		: ''} ${s.item}"
                             >
                                 <div class="${s.imgwrap} ${index === 0 ? s.firstimgwrap : ''}">
                                     <img
@@ -33,7 +33,7 @@ export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
                                     ${item.prizeAlias}
                                 </p>
                             </div>`
-                    )}
+	)}
                 </div>
             </div>
             <div class="${s.btnwrap}"><div class="${s.startbtn}"></div></div>
@@ -44,19 +44,19 @@ export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
 };
 
 export const renderModify = (modify: any[]) => {
-    if (!modify || !Array.isArray(modify)) return '';
-    return html`
+	if (!modify || !Array.isArray(modify)) return '';
+	return html`
         ${modify.map(
-            (item) =>{
-                if (item.animation) {
-                    item.transform = `scale(${window.innerWidth/750})`,
-                    item.transformOrigin = 'top left'
-                }
+		(item) =>{
+			if (item.animation) {
+				item.transform = `scale(${window.innerWidth/750})`,
+				item.transformOrigin = 'top left';
+			}
                 
-                return `<div class="${s.modify}" style="${inlineStyle(
-                    item
-                )}">&nbsp;</div>`
-            }
-        )}
+			return `<div class="${s.modify}" style="${inlineStyle(
+				item
+			)}">&nbsp;</div>`;
+		}
+	)}
     `;
 };

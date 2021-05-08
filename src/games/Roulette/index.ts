@@ -19,11 +19,24 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
+import { CoreConfigType, Prize } from '~/types/core';
 
 const stamp = new Date().getTime();
 
 class Game {
-	constructor(config) {
+	targetId: any;
+	emBase: any;
+	prizes: any;
+	GameTheme: any;
+	parentId: any;
+	core: Core;
+	Loading: any;
+	distory: any;
+	oldDge: number;
+	activeElements: any;
+	lotteryDrawing: boolean;
+	roundTimer: any;
+	constructor(config: CoreConfigType) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||
@@ -60,7 +73,7 @@ class Game {
 		target.classList.add(s.target);
 		await dormancyFor(50);
 		const target_1 = document.getElementById(this.targetId);
-		const lotterybtn = target_1.querySelector(`.${s.lotterybutton}`);
+		const lotterybtn: HTMLElement = target_1.querySelector(`.${s.lotterybutton}`);
 		lotterybtn.onclick = (e) => {
 			e.preventDefault();
 			return this.core.lottery();
@@ -76,7 +89,7 @@ class Game {
 	 * @returns
 	 * @memberof Game
 	 */
-	lottery = (prize, time, round) => {
+	lottery = (prize: Prize, time: string, round: number) => {
 		const { prizeId } = prize || {};
 		const target = document.getElementById(this.targetId);
 		const wheel = target.querySelector(`.${s.lottery}`);
@@ -93,7 +106,7 @@ class Game {
 			const defaultRound = round || 6;
 			let position = 0;
 			const halfDeg = eachDeg / 2;
-			this.prizes.forEach((el, index) => {
+			this.prizes.forEach((el: { prizeId: string; }, index: number) => {
 				if (el.prizeId === prizeId) {
 					position = length - (index + 1);
 				}
