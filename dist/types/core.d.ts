@@ -3,11 +3,11 @@ export interface CoreConfigType {
     /**
      * GameId 默认game-target-时间戳+100以内随机数
      */
-    targetId: string;
+    targetId?: string;
     /**
      * Game挂载Id
      */
-    parentId: string;
+    parentId?: string;
     /**
      * 成功弹窗动画
      */
@@ -53,71 +53,71 @@ export interface CoreConfigType {
     /**
      * 奖品参数
      */
-    prizes: Prize[];
+    prizes?: Prize[];
     /**
      * 参与人电话
      */
-    playerPhone: string;
+    playerPhone?: string;
     /**
      * 默认收货人信息
      */
-    receiverInfo: any;
+    receiverInfo?: any;
     /**
      * 要求验证身份证
      */
-    cardIdRequest: any;
+    cardIdRequest?: any;
     /**
      * 验证参与人电话
      */
-    checkVerificationCode: () => Promise<any>;
+    checkVerificationCode?: () => Promise<any>;
     /**
      * 取消时的回调（取消中奖结果或取消填写地址）
      */
-    onCancel: () => void;
+    onCancel?: () => void;
     /**
      * 确定时的回调（确定或完成填写地址后）
      */
-    onEnsure: () => void;
+    onEnsure?: () => void;
     /**
      * 显示中奖
      */
-    onShowSuccess: () => void;
+    onShowSuccess?: () => void;
     /**
      * 显示未中奖
      */
-    onShowFailed: () => void;
+    onShowFailed?: () => void;
     /**
      * 显示地址弹窗
      */
-    onShowAddress: () => void;
+    onShowAddress?: () => void;
     /**
      * 未中奖弹窗标题
      */
-    failedModalTitle: string;
+    failedModalTitle?: string;
     /**
      * 中奖弹窗文字
      */
-    successModalTitle: string;
+    successModalTitle?: string;
     /**
      * 中奖按钮文字
      */
-    submitSuccessText: string;
+    submitSuccessText?: string;
     /**
      * 中奖保存地址按钮文字
      */
-    submitAddressText: string;
+    submitAddressText?: string;
     /**
      * 未中奖按钮文字
      */
-    submitFailedText: string;
+    submitFailedText?: string;
     /**
      * em基准像素
      */
-    emBase: number;
+    emBase?: number;
     /**
      * loading 设置
      */
-    loading: {
+    loading?: {
         /**
          * loading 尺寸大小 默认20
          */
@@ -165,7 +165,7 @@ export interface Prize {
      * @type {string}
      * @memberof Prize
      */
-    prizeAlias: string;
+    prizeAlias?: string;
     /**
      * 奖品名称
      * @type {string}
@@ -177,13 +177,13 @@ export interface Prize {
      * @type {string}
      * @memberof Prize
      */
-    awardMsg: string;
+    awardMsg?: string;
     /**
      * 游戏图片
      * @type {string}
      * @memberof Prize
      */
-    gameImg: string;
+    gameImg?: string;
     /**
      * 奖品图片
      * @type {string}

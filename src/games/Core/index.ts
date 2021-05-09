@@ -273,14 +273,14 @@ class Core {
 	 */
 	showSuccessModal = async (prize: Prize) => {
 		if (this.onShowSuccess instanceof Function) {
-			this.onShowSuccess(prize);
+			setTimeout(() => this.onShowSuccess(prize));
 		}
 		const result: any = await this.SuccessModal.showModal(prize);
 		
 		// 1：默认；2：填写地址；3：链接类；4：虚拟卡
 		if (result?.receiveType === ReceiveType.Address) {
 			if (this.onShowAddress instanceof Function) {
-				this.onShowAddress();
+				setTimeout(() => this.onShowAddress());
 			}
 			this.AddressModal?.showModal(this.saveAddress, async () => {
 				await this.showSuccessModal(result);
@@ -298,7 +298,7 @@ class Core {
 	 */
 	async showFailedModal(prize: Prize) {
 		if (this.onShowFailed instanceof Function) {
-			this.onShowFailed(prize);
+			setTimeout(() => this.onShowFailed(prize));
 		}
 		await this.FailedModal.showModal(prize);
 	}
