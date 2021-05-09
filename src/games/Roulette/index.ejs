@@ -189,6 +189,9 @@
           submitFailedText: "好吧~~~",
           onCancel: function(){console.log('放弃2')},
           onEnsure: function(prize){ console.log('确定中奖结果2！', prize); },
+          onShowSuccess: function(prize){ console.log('显示中奖结果2！', prize); },
+          onShowFailed: function(prize){ console.log('显示未中奖结果2！', prize); },
+          onShowAddress:function(){ console.log('显示地址弹窗2！'); },
           loading: {
             size: 20, // loading大小 默认20
             length: 5, // 由几个vertices组成默认12个

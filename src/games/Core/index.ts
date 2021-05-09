@@ -31,6 +31,9 @@ class Core {
 	start: any;
 	saveAddress: any;
 	lotteryAction: any;
+	onShowSuccess: (prize: Prize) => void;
+	onShowFailed: (prize: Prize) => void;
+	onShowAddress: () => void;
 
 	constructor(config: CoreConfigType) {
 		const {
@@ -47,6 +50,9 @@ class Core {
 			checkVerificationCode,
 			onCancel,
 			onEnsure,
+			onShowSuccess,
+			onShowFailed,
+			onShowAddress,
 			failedModalTitle,
 			successModalTitle,
 			submitSuccessText,
@@ -71,6 +77,9 @@ class Core {
 		this.lotteryDrawing = false;
 		this.emBase = emBase || null;
 		this.loadingSet = isObject(loading) ? loading : {};
+		this.onShowSuccess = onShowSuccess;
+		this.onShowFailed = onShowFailed;
+		this.onShowAddress = onShowAddress;
 
 		this.SuccessModal = new ResultModal({
 			id: `${this.targetId}_successmodal`,
@@ -263,14 +272,21 @@ class Core {
 	 * @memberof Core
 	 */
 	showSuccessModal = async (prize: Prize) => {
+		if (this.onShowSuccess instanceof Function) {
+			this.onShowSuccess(prize);
+		}
 		const result: any = await this.SuccessModal.showModal(prize);
+		
 		// 1：默认；2：填写地址；3：链接类；4：虚拟卡
 		if (result?.receiveType === ReceiveType.Address) {
-			this.AddressModal?.showModal(this.saveAddress, () => {
-				this.showSuccessModal(result);
+			if (this.onShowAddress instanceof Function) {
+				this.onShowAddress();
+			}
+			this.AddressModal?.showModal(this.saveAddress, async () => {
+				await this.showSuccessModal(result);
 			}, () => {});
 		} else {
-			Promise.resolve().then(() => dormancyFor(200));
+			await Promise.resolve().then(() => dormancyFor(200));
 		}
 	};
 
@@ -280,8 +296,11 @@ class Core {
 	 * @returns
 	 * @memberof Core
 	 */
-	showFailedModal(prize: Prize) {
-		return this.FailedModal.showModal(prize);
+	async showFailedModal(prize: Prize) {
+		if (this.onShowFailed instanceof Function) {
+			this.onShowFailed(prize);
+		}
+		await this.FailedModal.showModal(prize);
 	}
 }
 
