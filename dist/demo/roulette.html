@@ -36,7 +36,7 @@
         width: 100%;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
-      }</style></head><body><div id="app"><div class="clearfix" style="padding-bottom: 50px; padding-top: 50px;"><div class="box"><div id="parentId1"></div></div><div style="text-align: center; padding-top: 1em"><select id="changeCard"><option value="10">10个奖品</option><option value="9">9个奖品</option><option value="8">8个奖品</option><option value="7">7个奖品</option><option value="6">6个奖品</option><option value="5">5个奖品</option><option value="4">4个奖品</option><option value="3">3个奖品</option><option value="2">2个奖品</option><option value="1">1个奖品</option></select></div><br><br><br><div class="box1"><div id="parentId2"></div></div></div></div><script type="text/javascript" src="../lib/roulette.js?7f10dc7625abe55ee26f"></script></body><script>var isPC = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));
+      }</style></head><body><div id="app"><div class="clearfix" style="padding-bottom: 50px; padding-top: 50px;"><div class="box"><div id="parentId1"></div></div><div style="text-align: center; padding-top: 1em"><select id="changeCard"><option value="10">10个奖品</option><option value="9">9个奖品</option><option value="8">8个奖品</option><option value="7">7个奖品</option><option value="6">6个奖品</option><option value="5">5个奖品</option><option value="4">4个奖品</option><option value="3">3个奖品</option><option value="2">2个奖品</option><option value="1">1个奖品</option></select></div><br><br><br><div class="box1"><div id="parentId2"></div></div></div></div><script type="text/javascript" src="../lib/roulette.js?c2b1bc233804bcc340fc"></script></body><script>var isPC = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));
         var W = window.innerWidth;
         var rate = window.innerWidth/24;
         document.body.style.fontSize = isPC ? '16px' : rate+'px';
@@ -146,6 +146,9 @@
           submitFailedText: "好吧~~~",
           onCancel: function(){console.log('放弃2')},
           onEnsure: function(prize){ console.log('确定中奖结果2！', prize); },
+          onShowSuccess: function(prize){ console.log('显示中奖结果2！', prize); },
+          onShowFailed: function(prize){ console.log('显示未中奖结果2！', prize); },
+          onShowAddress:function(){ console.log('显示地址弹窗2！'); },
           loading: {
             size: 20, // loading大小 默认20
             length: 5, // 由几个vertices组成默认12个

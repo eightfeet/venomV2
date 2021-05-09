@@ -79,6 +79,18 @@ export interface CoreConfigType {
      */
     onEnsure: () => void;
     /**
+     * 显示中奖
+     */
+    onShowSuccess: () => void;
+    /**
+     * 显示未中奖
+     */
+    onShowFailed: () => void;
+    /**
+     * 显示地址弹窗
+     */
+    onShowAddress: () => void;
+    /**
      * 未中奖弹窗标题
      */
     failedModalTitle: string;

@@ -18,6 +18,9 @@ declare class Core {
     start: any;
     saveAddress: any;
     lotteryAction: any;
+    onShowSuccess: (prize: Prize) => void;
+    onShowFailed: (prize: Prize) => void;
+    onShowAddress: () => void;
     constructor(config: CoreConfigType);
     /**
      * 放弃中奖结果时重置游戏
@@ -70,6 +73,6 @@ declare class Core {
      * @returns
      * @memberof Core
      */
-    showFailedModal(prize: Prize): Promise<unknown>;
+    showFailedModal(prize: Prize): Promise<void>;
 }
 export default Core;
