@@ -120,12 +120,12 @@ class Game {
 			newdeg = newdeg + halfDeg;
 			newdeg = newdeg + this.oldDge;
 			this.oldDge = (newdeg - (newdeg % 360)) % 360;
-			console.log('旋转4', 14);
+			console.log('旋转4', 15);
 
 			const css = `-webkit-transition-duration: ${newtime}s;
 						transition-duration: ${newtime}s;
-						-webkit-transform: rotate(${newdeg + 0.1}deg);
-						transform: rotate(${newdeg + 0.1}deg)`;
+						-webkit-transform: rotate(${newdeg}deg);
+						transform: rotate(${newdeg}deg)`;
 			wheel.setAttribute('style', css);
 
 			window.clearTimeout(this.roundTimer);
@@ -136,7 +136,7 @@ class Game {
 				wheel.setAttribute('style', css);
 				resolve(prize);
 				this.lotteryDrawing = false;
-			}, newtime * 1000 + 1000);
+			}, newtime * 1000 + 100);
 		});
 	};
 }
