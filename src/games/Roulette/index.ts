@@ -90,6 +90,7 @@ class Game {
 	 * @memberof Game
 	 */
 	lottery = (prize: Prize, time?: string, round?: number) => {
+		console.log(1);
 		const { prizeId } = prize || {};
 		const target = document.getElementById(this.targetId);
 		const wheel = target.querySelector(`.${s.lottery}`);
@@ -98,9 +99,11 @@ class Game {
 
 		return new Promise((resolve, reject) => {
 			if (!prizeId) {
+				console.log(0);
 				this.lotteryDrawing = false;
 				return reject('抽奖失败！');
 			}
+			console.log(2);
 			const newtime = parseInt(time, 0) || 5;
 
 			const defaultRound = round || 6;
@@ -111,18 +114,20 @@ class Game {
 					position = length - (index + 1);
 				}
 			});
-
+			console.log(3);
 			let newdeg = eachDeg * position;
 			newdeg += 360 * defaultRound; // 默认旋转几周
 			newdeg = newdeg + halfDeg;
 			newdeg = newdeg + this.oldDge;
 			this.oldDge = (newdeg - (newdeg % 360)) % 360;
+			console.log('旋转', 4);
 			const css = `-webkit-transition-duration: ${newtime}s;
 						transition-duration: ${newtime}s;
 						-webkit-transform: rotate(${newdeg}deg);
 						transform: rotate(${newdeg}deg)`;
 			wheel.setAttribute('style', css);
 			window.clearTimeout(this.roundTimer);
+			console.log(5);
 			this.roundTimer = setTimeout(() => {
 				const css = `-webkit-transform: rotate(${newdeg % 360}deg);
 							transform: rotate(${newdeg % 360}deg)`;

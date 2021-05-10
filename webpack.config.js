@@ -76,7 +76,7 @@ module.exports = (env, argv) => {
 								comments: false
 							},
 							compress: {
-								drop_console: isPro
+								drop_console: false
 							}
 						}
 					})

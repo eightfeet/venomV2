@@ -207,6 +207,7 @@ class Core {
 	 * @memberof Core
 	 */
 	lottery = () => {
+		console.log(6);
 		if (this.lotteryDrawing) {
 			return Promise.reject(
 				'The lottery is currently drawing. Just a moment'
@@ -216,6 +217,7 @@ class Core {
 		Promise.resolve()
 			.then(() => this.start())
 			.then((res) => {
+				console.log('api抽奖!');
 				return (
 					Promise.resolve()
 					// 处理抽奖过程
@@ -225,6 +227,7 @@ class Core {
 				);
 			})
 			.then((res) => {
+				console.log(7);
 				this.lotteryDrawing = false;
 				if (res.prizeType === PrizeType.LosingLottery) {
 					return this.showFailedModal(res);
