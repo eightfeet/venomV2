@@ -102,7 +102,6 @@ class Game {
 				return reject('抽奖失败！');
 			}
 			const newtime = parseInt(time, 0) || 5;
-
 			const defaultRound = round || 6;
 			let position = 0;
 			const halfDeg = eachDeg / 2;
@@ -111,25 +110,27 @@ class Game {
 					position = length - (index + 1);
 				}
 			});
-
 			let newdeg = eachDeg * position;
 			newdeg += 360 * defaultRound; // 默认旋转几周
 			newdeg = newdeg + halfDeg;
 			newdeg = newdeg + this.oldDge;
 			this.oldDge = (newdeg - (newdeg % 360)) % 360;
+
 			const css = `-webkit-transition-duration: ${newtime}s;
 						transition-duration: ${newtime}s;
 						-webkit-transform: rotate(${newdeg}deg);
 						transform: rotate(${newdeg}deg)`;
 			wheel.setAttribute('style', css);
+
 			window.clearTimeout(this.roundTimer);
 			this.roundTimer = setTimeout(() => {
-				const css = `-webkit-transform: rotate(${newdeg % 360}deg);
-							transform: rotate(${newdeg % 360}deg)`;
+				const css = `
+						-webkit-transform: rotate(${newdeg % 360}deg);
+						transform: rotate(${newdeg % 360}deg)`;
 				wheel.setAttribute('style', css);
 				resolve(prize);
 				this.lotteryDrawing = false;
-			}, newtime * 1000);
+			}, newtime * 1000 + 100);
 		});
 	};
 }
