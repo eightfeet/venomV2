@@ -1,7 +1,7 @@
 ## lottery
 
 抽奖 
-[demo](https://by-healthfed.github.io/venom/dist/demo/index.html)
+[demo](http://www.eightfeet.cn/venomV2/dist/demo/index.html)
 
 #### parame
 

@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <%= htmlWebpackPlugin.options.scripts %>
-    <style>
-      body,
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>掷骰子</title><script src="https://by-health-cdn.oss-cn-beijing.aliyuncs.com/region/regions.js"></script><script src="./../data/dice/prizes1.js"></script><script src="./../data/dice/prizes2.js"></script><script src="./../data/dice/themedata1.js"></script><script src="./../data/dice/themedata2.js"></script><style>body,
       html {
         height: 100%;
         width: 100%;
@@ -28,6 +16,7 @@
         width: 17.408em;
         height: 17.408em;
         margin: 0 auto;
+        margin-top: 12em;
         position: relative;
       }
       #parentId1,
@@ -48,47 +37,16 @@
         width: 100%;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <div class="clearfix" style="padding-bottom: 50px; padding-top: 50px;">
-        <div class="box">
-          <div id="parentId1"></div>
-        </div>
-        <div style="text-align: center; padding-top: 1em">
-          <select id="changeCard">
-            <option value="10">10个奖品</option>
-            <option value="9">9个奖品</option>
-            <option value="8">8个奖品</option>
-            <option value="7">7个奖品</option>
-            <option value="6">6个奖品</option>
-            <option value="5">5个奖品</option>
-            <option value="4">4个奖品</option>
-            <option value="3">3个奖品</option>
-            <option value="2">2个奖品</option>
-            <option value="1">1个奖品</option>
-          </select>
-        </div>
-        <br/><br/><br/>
-        <div class="box1">
-          <div id="parentId2"></div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    var isPC = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));
+      }</style></head><body><div id="app"><div class="clearfix" style="padding-bottom: 50px; padding-top: 50px;"><div class="box"><div id="parentId1"></div></div><div style="text-align: center; padding-top: 1em"><select id="changeCard"><option value="6">6个奖品</option><option value="5">5个奖品</option><option value="4">4个奖品</option><option value="3">3个奖品</option><option value="2">2个奖品</option><option value="1">1个奖品</option></select></div><br><br><br><div class="box1"><div id="parentId2"></div></div></div></div><script type="text/javascript" src="../lib/dice.js?c2b1bc233804bcc340fc"></script></body><script>var isPC = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));
         var W = window.innerWidth;
         var rate = window.innerWidth/24;
         document.body.style.fontSize = isPC ? '16px' : rate+'px';
         var emBase = isPC ? 16 : rate;
         var prizesData1 = window.prizes1;
         var prizesData2 = window.prizes2;
-        var rand = 10;
-        var Game = window.___Lottery___.roulette.Game;
-        var NoticeModal = window.___Lottery___.roulette.NoticeModal;
+        var rand = 6;
+        var Game = window.___Lottery___.dice.Game;
+        var NoticeModal = window.___Lottery___.dice.NoticeModal;
 
         var start1 = function() {
             return new Promise(function(resolve){
@@ -106,7 +64,7 @@
                 window.LotteryGame1.Loading.show();
                 window.setTimeout(function(){
                 window.LotteryGame1.Loading.hide();
-                resolve(prizes2[7]);
+                resolve(prizes2[Math.floor(Math.random() * 5)]);
                 }, 1000);
             });
         }
@@ -140,19 +98,19 @@
           receiverPhone: "13622841234",
           address: "address"
         };
-        console.log('emBase: ',emBase,)
+  
         var data1 = {
-          targetId: "target1",
+          // targetId: "target1",
           parentId: "parentId1",
           playerPhone: "13635219421",
           cardIdRequest: 3, // 填写收货地址时是否验证身份证: this.cardIdRequest = 1 隐藏身份证，2 验证身份证，3 身份证为空时不验证有填写时验证，4 不验证身份证
-          style: {}, //window.themedata1,
+          style: window.themedata1,
           start: start1,
-          emBase: emBase,
           saveAddress: saveAddress,
           receiverInfo: receiverInfo,
           checkVerificationCode: checkVerificationCode, // 检查手机验证码
           prizes: prizesData1.slice(0, rand),
+          // emBase: 10,
           onCancel: function(){console.log('放弃1')},
           onEnsure: function(prize){ console.log('确定中奖结果1！', prize);},
           loading: {
@@ -173,12 +131,11 @@
         };
   
         var data2 = {
-          emBase: emBase,
           targetId: "target2",
           parentId: "parentId2",
           playerPhone: "13635219421",
           cardIdRequest: 3, // 填写收货地址时是否验证身份证: this.cardIdRequest = 1 隐藏身份证，2 验证身份证，3 身份证为空时不验证有填写时验证，4 不验证身份证
-          style: window.themedata1,
+          style: window.themedata2,
           start: start2,
           saveAddress: saveAddress,
           receiverInfo: receiverInfo,
@@ -189,9 +146,6 @@
           submitFailedText: "好吧~~~",
           onCancel: function(){console.log('放弃2')},
           onEnsure: function(prize){ console.log('确定中奖结果2！', prize); },
-          onShowSuccess: function(prize){ console.log('显示中奖结果2！', prize); },
-          onShowFailed: function(prize){ console.log('显示未中奖结果2！', prize); },
-          onShowAddress:function(){ console.log('显示地址弹窗2！'); },
           loading: {
             size: 20, // loading大小 默认20
             length: 5, // 由几个vertices组成默认12个
@@ -211,6 +165,4 @@
         //   title:"对不起",
         //   content: "没有机会了"
         // });
-        // LotteryGame2.AddressModal.showModal()
-      </script>
-</html>
+        // LotteryGame2.AddressModal.showModal()</script></html>

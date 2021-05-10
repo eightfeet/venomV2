@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title><%= htmlWebpackPlugin.options.title %></title>
-        <%= htmlWebpackPlugin.options.scripts %>
-        <style>
-            body,
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>用例</title><script src="https://by-health-cdn.oss-cn-beijing.aliyuncs.com/region/regions.js"></script><script src="./../data/case/prizes1.js"></script><script src="./../data/case/prizes2.js"></script><script src="./../data/case/themedata1.js"></script><script src="./../data/case/themedata2.js"></script><style>body,
             html {
                 height: 100%;
                 width: 100%;
                 overflow: hidden;
                 padding: 0;
                 margin: 0;
-                background-color: #fff;
             }
             #parentId1,
             #parentId2 {
@@ -37,43 +24,10 @@
                 width: 100%;
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
-            }
-
-            .box1 {
-                margin-top: 20em ;
-            }
-
-            #box2 {
-
-            }
-
-        </style>
-    </head>
-    <body>
-        <div id="app">
-            <div
-                class="clearfix"
-                style="padding-bottom: 50px; padding-top: 50px"
-            >
-                <div class="box">
-                    <div id="parentId1"></div>
-                </div>
-                <div class="box1">
-                    <div id="parentId2"></div>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script>
-        var isPC = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i));
-        var W = window.innerWidth;
-        var rate = window.innerWidth/24;
-        document.body.style.fontSize = isPC ? '16px' : rate+'px';
-        var emBase = isPC ? 16 : rate;
-        var prizesData1 = window.prizes1.slice(0,8);
-        var prizesData2 = window.prizes2.slice(0,4);
+            }</style></head><body><div id="app"><div class="clearfix" style="padding-bottom: 50px; padding-top: 50px"><div class="box"><div id="parentId1"></div></div><div class="box1"><div id="parentId2"></div></div></div></div><script type="text/javascript" src="../lib/case.js?c2b1bc233804bcc340fc"></script></body><script>var prizesData1 = window.prizes1;
+        var prizesData2 = window.prizes2;
         var rand = 6;
-        var Game = window.___Lottery___.treasurebox.Game;
+        var Game = window.___Lottery___.case.Game;
 
         var start1 = function () {
             return new Promise(function (resolve) {
@@ -90,7 +44,7 @@
                 window.LotteryGame1.Loading.show();
                 window.setTimeout(function () {
                     window.LotteryGame1.Loading.hide();
-                    resolve(prizes2[3]);
+                    resolve(prizes2[4]);
                 }, 1000);
             });
         };
@@ -140,7 +94,7 @@
             receiverInfo: receiverInfo,
             checkVerificationCode: checkVerificationCode, // 检查手机验证码
             prizes: prizesData1.slice(0, rand),
-            emBase: emBase,
+            emBase: 10,
             onCancel: () => console.log('放弃1'),
             onEnsure: function (prize) {
                 console.log('确定中奖结果1！', prize);
@@ -174,12 +128,9 @@
             loading: {
                 size: 20, // loading大小 默认20
                 length: 5, // 由几个vertices组成默认12个
-                // verticesColors: ['red', 'green', 'blue', 'yellow', 'orange'],
                 cycle: 0.5,
             },
         };
 
         window.LotteryGame1 = new Game(data1);
-        window.LotteryGame2 = new Game(data2);
-    </script>
-</html>
+        window.LotteryGame2 = new Game(data2);</script></html>
