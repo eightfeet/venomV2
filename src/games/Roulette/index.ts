@@ -121,11 +121,22 @@ class Game {
 			newdeg = newdeg + this.oldDge;
 			this.oldDge = (newdeg - (newdeg % 360)) % 360;
 			console.log('旋转4', 4);
+			const comput1 = window.getComputedStyle(wheel);
+			console.log(comput1['-webkit-transition-duration']);
+			console.log(comput1['transition-duration']);
+			console.log(comput1['-webkit-transform']);
+			console.log(comput1['transform']);
 			const css = `-webkit-transition-duration: ${newtime}s;
 						transition-duration: ${newtime}s;
 						-webkit-transform: rotate(${newdeg}deg);
 						transform: rotate(${newdeg}deg)`;
 			wheel.setAttribute('style', css);
+			console.log('====================================');
+			const comput2 = window.getComputedStyle(wheel);
+			console.log(comput2['-webkit-transition-duration']);
+			console.log(comput2['transition-duration']);
+			console.log(comput2['-webkit-transform']);
+			console.log(comput2['transform']);
 			window.clearTimeout(this.roundTimer);
 			console.log(5);
 			this.roundTimer = setTimeout(() => {
