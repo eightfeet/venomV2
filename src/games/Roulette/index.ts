@@ -120,7 +120,7 @@ class Game {
 			newdeg = newdeg + halfDeg;
 			newdeg = newdeg + this.oldDge;
 			this.oldDge = (newdeg - (newdeg % 360)) % 360;
-			console.log('旋转', 4);
+			console.log('旋转4', 4);
 			const css = `-webkit-transition-duration: ${newtime}s;
 						transition-duration: ${newtime}s;
 						-webkit-transform: rotate(${newdeg}deg);
@@ -129,12 +129,12 @@ class Game {
 			window.clearTimeout(this.roundTimer);
 			console.log(5);
 			this.roundTimer = setTimeout(() => {
-				const css = `
-						-webkit-transition-duration: 0s;
-						transition-duration: 0s;
-						-webkit-transform: rotate(${newdeg % 360}deg);
-						transform: rotate(${newdeg % 360}deg)`;
-				wheel.setAttribute('style', css);
+				// const css = `
+				// 		-webkit-transition-duration: 0s;
+				// 		transition-duration: 0s;
+				// 		-webkit-transform: rotate(${newdeg % 360}deg);
+				// 		transform: rotate(${newdeg % 360}deg)`;
+				// wheel.setAttribute('style', css);
 				resolve(prize);
 				this.lotteryDrawing = false;
 			}, newtime * 1000);
