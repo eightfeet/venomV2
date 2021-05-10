@@ -129,8 +129,11 @@ class Game {
 			window.clearTimeout(this.roundTimer);
 			console.log(5);
 			this.roundTimer = setTimeout(() => {
-				const css = `-webkit-transform: rotate(${newdeg % 360}deg);
-							transform: rotate(${newdeg % 360}deg)`;
+				const css = `
+						-webkit-transition-duration: 0s;
+						transition-duration: 0s;
+						-webkit-transform: rotate(${newdeg % 360}deg);
+						transform: rotate(${newdeg % 360}deg)`;
 				wheel.setAttribute('style', css);
 				resolve(prize);
 				this.lotteryDrawing = false;
