@@ -146,7 +146,22 @@
           parentId: "parentId1",
           playerPhone: "13635219421",
           cardIdRequest: 3, // 填写收货地址时是否验证身份证: this.cardIdRequest = 1 隐藏身份证，2 验证身份证，3 身份证为空时不验证有填写时验证，4 不验证身份证
-          style: {}, //window.themedata1,
+          style: {
+            SuccessModalTheme: {
+              "close": {
+                  "top": "auto",
+                  "left": "50%",
+                  "width": "2.08em",
+                  "bottom": "-4.256em",
+                  "height": "2.08em",
+                  "zIndex": 110,
+                  "marginLeft": "-1.04em",
+                  "backgroundSize": "contain",
+                  "backgroundImage": "url(' https://upload-yyj.by-health.com/upload/images/20190418163518166.png')",
+                  "backgroundRepeat": "no-repeat"
+              },
+            }
+          }, //window.themedata1,
           start: start1,
           emBase: emBase,
           saveAddress: saveAddress,
