@@ -80,7 +80,7 @@ class Core {
 		this.onShowSuccess = onShowSuccess;
 		this.onShowFailed = onShowFailed;
 		this.onShowAddress = onShowAddress;
-
+		console.log(3333, SuccessModalAnimation);
 		this.SuccessModal = new ResultModal({
 			id: `${this.targetId}_successmodal`,
 			outerFrameId,
