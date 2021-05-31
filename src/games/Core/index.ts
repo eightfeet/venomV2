@@ -80,7 +80,6 @@ class Core {
 		this.onShowSuccess = onShowSuccess;
 		this.onShowFailed = onShowFailed;
 		this.onShowAddress = onShowAddress;
-		console.log(3333, SuccessModalAnimation);
 		this.SuccessModal = new ResultModal({
 			id: `${this.targetId}_successmodal`,
 			outerFrameId,
@@ -296,12 +295,22 @@ class Core {
 	 * @returns
 	 * @memberof Core
 	 */
-	async showFailedModal(prize: Prize) {
-		if (this.onShowFailed instanceof Function) {
-			setTimeout(() => this.onShowFailed(prize));
-		}
-		await this.FailedModal.showModal(prize);
-	}
+	 showFailedModal = async (prize: Prize) => {
+		 if (this.onShowFailed instanceof Function) {
+			 this.onShowFailed(prize);}
+			 await this.FailedModal.showModal(prize);
+	 }
+
+	 /**
+	 * 显示填写地址
+	 * @returns
+	 * @memberof Core
+	 */
+	 showAddressModal = async () => {
+		 if (this.onShowAddress instanceof Function) {
+			 this.onShowAddress();}
+			 await this.AddressModal?.showModal(this.saveAddress, async () => {}, () => {});
+	 }
 }
 
 export default Core;

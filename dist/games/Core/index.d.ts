@@ -73,6 +73,13 @@ declare class Core {
      * @returns
      * @memberof Core
      */
-    showFailedModal(prize: Prize): Promise<void>;
+    showFailedModal: (prize: Prize) => Promise<void>;
+    /**
+    * 显示填写地址
+    * @param {Object} prize
+    * @returns
+    * @memberof Core
+    */
+    showAddressModal: () => Promise<void>;
 }
 export default Core;
