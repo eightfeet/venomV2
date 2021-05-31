@@ -296,9 +296,9 @@ class Core {
 	 * @memberof Core
 	 */
 	 showFailedModal = async (prize: Prize) => {
-		 if (this.onShowFailed instanceof Function) {
-			 this.onShowFailed(prize);}
-			 await this.FailedModal.showModal(prize);
+			 this.FailedModal.showModal(prize);
+			 if (this.onShowFailed instanceof Function) {
+				 this.onShowFailed(prize);}
 	 }
 
 	 /**
@@ -307,9 +307,9 @@ class Core {
 	 * @memberof Core
 	 */
 	 showAddressModal = async () => {
-		 if (this.onShowAddress instanceof Function) {
-			 this.onShowAddress();}
-			 await this.AddressModal?.showModal(this.saveAddress, async () => {}, () => {});
+			 this.AddressModal?.showModal(this.saveAddress, async () => {}, () => {});
+			 if (this.onShowAddress instanceof Function) {
+				 this.onShowAddress();}
 	 }
 }
 
