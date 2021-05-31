@@ -76,7 +76,6 @@ declare class Core {
     showFailedModal: (prize: Prize) => Promise<void>;
     /**
     * 显示填写地址
-    * @param {Object} prize
     * @returns
     * @memberof Core
     */
