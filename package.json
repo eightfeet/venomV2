@@ -1,6 +1,6 @@
 {
   "name": "@byhealth/lottery",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "",
   "scripts": {
     "build": "rm -rf ./dist && webpack --mode=production",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@byhealth/walle": "^1.0.18",
+    "@byhealth/walle": "^1.0.19",
     "@types/common-tags": "^1.8.0",
     "common-tags": "^1.8.0",
     "core-js": "^3.2.1",

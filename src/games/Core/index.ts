@@ -103,7 +103,6 @@ class Core {
 			// 重制游戏时this.onCancel嫁接onCancel方法
 			onCancel: this.onCancel(onCancel)
 		});
-		
 		this.AddressModal = new AddressModal({
 			id: `${this.targetId}_addressmodal`,
 			AddressModalTheme,
