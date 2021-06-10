@@ -22,7 +22,7 @@ declare class Case {
      * @memberof Game
      */
     renderGame: () => Promise<void>;
-    distory: () => void;
+    destroy: () => void;
     /**
      *
      * 开始抽奖

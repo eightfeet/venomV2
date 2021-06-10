@@ -45,7 +45,7 @@ declare class Core {
      * 销毁Game
      * @memberof Core
      */
-    distory: () => void;
+    destroy: () => void;
     /**
      * 抽奖
      * @returns

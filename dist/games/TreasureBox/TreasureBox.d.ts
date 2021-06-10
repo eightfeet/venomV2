@@ -27,7 +27,7 @@ declare class TreasureBox {
      * 销毁
      * @memberof TreasureBox
      */
-    distory: () => void;
+    destroy: () => void;
     /**
      *
      * 开始抽奖

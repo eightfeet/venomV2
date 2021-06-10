@@ -10,7 +10,7 @@ declare class Game {
     parentId: any;
     core: Core;
     Loading: any;
-    distory: any;
+    destroy: any;
     oldDge: number;
     activeElements: any;
     lotteryDrawing: boolean;
