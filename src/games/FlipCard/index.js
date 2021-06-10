@@ -65,7 +65,7 @@ class Game {
 			saveAddress: this.onSaveAddress(saveAddress),
 			targetId: this.targetId});
 		this.Loading = this.core.Loading;
-		this.distory = this.core.distory;
+		this.destroy = this.core.destroy;
 		this.renderGame()
 			.then(() => new Promise(resolve => {
 				this.core.lotteryDrawing = true;

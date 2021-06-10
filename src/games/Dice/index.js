@@ -27,7 +27,7 @@ class Game {
 			lottery: this.lottery,
 			targetId: this.targetId});
 		this.Loading = this.core.Loading;
-		this.distory = this.core.distory;
+		this.destroy = this.core.destroy;
 		this.oldDge           = 0;
 		this.renderGame();
 		this.activeElements = null;

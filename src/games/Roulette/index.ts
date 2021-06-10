@@ -31,7 +31,7 @@ class Game {
 	parentId: any;
 	core: Core;
 	Loading: any;
-	distory: any;
+	destroy: any;
 	oldDge: number;
 	activeElements: any;
 	lotteryDrawing: boolean;
@@ -51,7 +51,7 @@ class Game {
 			targetId: this.targetId
 		});
 		this.Loading = this.core.Loading;
-		this.distory = this.core.distory;
+		this.destroy = this.core.destroy;
 		this.oldDge = 0;
 		this.renderGame();
 		this.activeElements = null;

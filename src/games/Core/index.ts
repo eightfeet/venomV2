@@ -179,7 +179,7 @@ class Core {
 	 * 销毁Game
 	 * @memberof Core
 	 */
-	distory = () => {
+	destroy = () => {
 		this.Loading.reset();
 		const mobileSelect = document.querySelector('.mobileSelect');
 		mobileSelect && mobileSelect.parentNode.removeChild(mobileSelect);

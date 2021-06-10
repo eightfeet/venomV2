@@ -73,9 +73,9 @@ class Case {
 		};
 	};
 
-	distory = () => {
+	destroy = () => {
 		window.clearTimeout(gameTimer);
-		this.core.distory();
+		this.core.destroy();
 	};
 
 	/**

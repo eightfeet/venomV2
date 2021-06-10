@@ -28,7 +28,7 @@ class Game {
 			lottery: this.lottery
 		});
 		this.Loading = this.core.Loading;
-		this.distory = this.core.distory;
+		this.destroy = this.core.destroy;
 		this.renderGame();
 		// 历史位置
 		this.historyPrizeInd = 0;

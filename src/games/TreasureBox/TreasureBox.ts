@@ -91,9 +91,9 @@ class TreasureBox {
      * 销毁
      * @memberof TreasureBox
      */
-    distory = () => {
+    destroy = () => {
         window.clearTimeout(gameTimer);
-        this.core.distory();
+        this.core.destroy();
     };
 
     /**
