@@ -122,11 +122,6 @@ class Core {
 		this.Loading = new Loading(data);
 		this.start =
 			start ||
-			function () {
-				throw '无抽奖方法';
-			};
-		this.start =
-			start ||
 			(() =>
 				new Promise((resolve, reject) => {
 					reject('start方法必须返回一个Promise对象');
