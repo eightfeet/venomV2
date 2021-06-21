@@ -140,7 +140,7 @@ class Game {
 	 * @memberof Game
 	 */
 	onEnsure = (ensure) => (prize) => {
-		ensure && ensure();
+		ensure && ensure(prize);
 		if (prize.receiveType !== 2) {
 			this.reset();
 		}
