@@ -19,7 +19,7 @@ declare class TreasureBox {
     constructor(config: TreasureBoxConfigType);
     /**
      *
-     * 初始化翻牌模板
+     * 初始化项目模板
      * @memberof TreasureBox
      */
     renderGame: () => Promise<void>;
