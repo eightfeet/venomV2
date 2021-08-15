@@ -11,10 +11,23 @@ const { createDom, inlineStyle } = htmlFactory;
 import { renderGame } from './template';
 import s from './index.scss';
 import { getGameDataLength, supplementingData } from './helper';
+import { Prize } from '~/types/core';
 
 const stamp = (new Date()).getTime();
 
 class Game {
+	targetId: any;
+	emBase: any;
+	prizesLength: any;
+	prizes: any;
+	GameTheme: any;
+	parentId: any;
+	core: Core;
+	Loading: any;
+	destroy: any;
+	historyPrizeInd: number;
+	buffer: number;
+	lotteryDrawing: boolean;
 	constructor(config){
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
@@ -54,9 +67,9 @@ class Game {
 			})
 			.then(() => {
 				const target = document.getElementById(this.targetId);
-				const lotterybtn = target.querySelector(`.${s.lotterybutton}`);
-				lotterybtn.onclick = e => {
-					return this.core.lottery(e);
+				const lotterybtn: any = target.querySelector(`.${s.lotterybutton}`);
+				lotterybtn.onclick = () => {
+					return this.core.lottery();
 				};
 			});
 	}
@@ -64,18 +77,16 @@ class Game {
 	/**
 	 *
 	 * 开始抽奖
-	 * @param {Object} prize 所获奖品
 	 * @param {Number} time 旋转时间默认5秒
-	 * @param {Number} round 旋转圈数默认6圈
 	 * @returns
 	 * @memberof Game
 	 */
 	// 渲染遗留数据
-	lotteryHistory = (time) => {
+	lotteryHistory = (time?: number) => {
 		let itemsDomList = document.getElementById(`${this.targetId}_items`).children;
 		let surplus = this.historyPrizeInd;
 		let settime = time || 100;
-		return new Promise(resolve => {
+		return new Promise<void>(resolve => {
 			if (surplus <= 0) {
 				return resolve();
 			}
@@ -108,7 +119,7 @@ class Game {
 	 * @returns
 	 * @memberof Game
 	 */
-	startLottery = (prize, time, round) => {
+	startLottery = (prize: Prize, time?: number, round?: number) => {
 		const { prizeId } = prize || {};
 		return new Promise((resolve, reject) => {
 			if (!prizeId) {

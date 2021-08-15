@@ -1,5 +1,6 @@
 import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
+import { Properties } from 'csstype';
 const { inlineStyle } = htmlFactory;
 
 
@@ -9,8 +10,7 @@ const { inlineStyle } = htmlFactory;
  * @param {Array} modify
  * @returns
  */
-function renderModify(modify){
-
+function renderModify(modify: Properties<0 | (string & {}), string & {}>[]): string{
 	if (!modify || !Array.isArray(modify)) {
 		return '';
 	}

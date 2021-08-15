@@ -244,8 +244,8 @@ window.themedata1 = {
             "backgroundColor": "#8bc34a",
             "width": ".4em",
             "height": ".4em",
-            "elements": 50,
-            "size": 20
+            "elements": "50",
+            "size": "20"
         }
     }
 };

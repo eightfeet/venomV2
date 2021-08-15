@@ -1,4 +1,32 @@
 import { ModalAnimation } from '@eightfeet/modal';
+
+export interface Theme {
+  /**
+   * 游戏皮肤
+   */
+  GameTheme?: any;
+  /**
+   * 成功弹窗皮肤
+   */
+  SuccessModalTheme?: any;
+  /**
+   * 地址填写弹窗皮肤
+   */
+  AddressModalTheme?: any;
+  /**
+   * loading皮肤
+   */
+  LoadingTheme?: any;
+  /**
+   * 失败弹窗
+   */
+  FailedModalTheme?: any;
+  /**
+   * 弱提示
+   */
+  MessageTheme?: any;
+}
+
 export interface CoreConfigType {
   /**
    * GameId 默认game-target-时间戳+100以内随机数
@@ -15,32 +43,7 @@ export interface CoreConfigType {
   /**
    * 皮肤配置
    */
-  style: {
-    /**
-     * 游戏皮肤
-     */
-    GameTheme?: any;
-    /**
-     * 成功弹窗皮肤
-     */
-    SuccessModalTheme?: any;
-    /**
-     * 地址填写弹窗皮肤
-     */
-    AddressModalTheme?: any;
-    /**
-     * loading皮肤
-     */
-    LoadingTheme?: any;
-    /**
-     * 失败弹窗
-     */
-    FailedModalTheme?: any;
-    /**
-     * 弱提示
-     */
-    MessageTheme?: any;
-  };
+  style: Theme;
   
   outerFrameId: string;
   /**
@@ -50,7 +53,7 @@ export interface CoreConfigType {
   /**
    * 保存地址
    */
-  saveAddress: () => Promise<any>;
+  saveAddress: (data: any) => Promise<any>;
   /**
    * 奖品参数
    */
@@ -78,7 +81,7 @@ export interface CoreConfigType {
   /**
    * 确定时的回调（确定或完成填写地址后）
    */
-  onEnsure?: () => void;
+  onEnsure?: (prize:Prize) => void;
   /**
    * 显示中奖
    */

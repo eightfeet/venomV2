@@ -10,12 +10,15 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
+import { CoreConfigType, Prize } from '~/types/core';
 
 // 设定必要初始值
 const stepX = 16.66666;
 const stepY = 25;
 
-const Arr = {
+const Arr: {
+	[keys: number]: number[][]
+} = {
 	1: [[1,2]],
 	2: [[1,1],[1,3]],
 	3: [[1,1],[1,3],[2,2]],
@@ -46,7 +49,18 @@ function KdShuffle(arr){
 }
 
 class Game {
-	constructor(config){
+	targetId: string;
+	timer: { timerDelay: any; timer: any; timerB: any; };
+	prizes: Prize[];
+	GameTheme: any;
+	parentId: any;
+	emBase: any;
+	core: Core;
+	Loading: any;
+	destroy: any;
+	activeElements: any;
+	lotteryDrawing: boolean;
+	constructor(config: CoreConfigType){
 		const { style, prizes, targetId, parentId, onCancel, onEnsure, saveAddress, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.timer = {
@@ -67,9 +81,9 @@ class Game {
 		this.Loading = this.core.Loading;
 		this.destroy = this.core.destroy;
 		this.renderGame()
-			.then(() => new Promise(resolve => {
+			.then(() => new Promise<void>(resolve => {
 				this.core.lotteryDrawing = true;
-				this.distributePrize();
+				this.distributePrize(undefined, undefined);
 				this.flipAll(180);
 				window.clearTimeout(this.timer.timerDelay);
 				this.timer.timerDelay = setTimeout(() => {
@@ -110,7 +124,7 @@ class Game {
 				const target = document.getElementById(this.targetId);
 				const items = target.querySelector(`.${s.wrap}`).children;
 				for (let index = 0; index < items.length; index++) {
-					const element = items[index];
+					const element: any = items[index];
 					if (element) {
 						element.style.left = `${itemPosition[index][1]*stepX}%`;
 						element.style.top = `${itemPosition[index][0] === 1 ? 0 : stepY*2}%`;
@@ -151,7 +165,7 @@ class Game {
 	 * @param { Function } saveAddress 承接保存地址方法
 	 * @memberof Game
 	 */
-	onSaveAddress = (saveAddress) => (data) => {
+	onSaveAddress = (saveAddress) => (data: any) => {
 		if (saveAddress && typeof saveAddress === 'function') {
 			return saveAddress(data)
 				.then(() => this.reset());
@@ -167,7 +181,7 @@ class Game {
 	 * @param { Object } prize 当前中奖对象
 	 * @memberof Game
 	 */
-	distributePrize = (target, prize) => {
+	distributePrize = (target: Element, prize: Prize) => {
 		const { prizeImage, prizeTitle, cardSelected } = this.GameTheme;
 		const flipIndex = target ? parseInt(target.getAttribute('data-index'), 10) : -1;
 		
@@ -209,7 +223,7 @@ class Game {
 	 * @param { HtmlNode } element
 	 * @memberof Game
 	 */
-	flip = (element) => new Promise(resolve => {
+	flip = (element) => new Promise<void>(resolve => {
 		element.style.transform = 'rotateY(180deg)';
 		element.style.webkitTransform = 'rotateY(180deg)';
 		setTimeout(() => {
@@ -224,11 +238,11 @@ class Game {
 	 * @param {Number} deg 翻转角度，180或0
 	 * @memberof Game
 	 */
-	flipAll = (deg) => new Promise(resolve => {
+	flipAll = (deg: number) => new Promise<void>(resolve => {
 		const target = document.getElementById(this.targetId);
 		const items = target.querySelector(`.${s.wrap}`).children;
 		for (let index = 0; index < items.length; index++) {
-			const element = items[index];
+			const element: any = items[index];
 			element.children[0].style.transform = `rotateY(${deg}deg)`;
 			element.children[0].style.webkitTransform = `rotateY(${deg}deg)`;
 		}
@@ -251,7 +265,7 @@ class Game {
 		window.clearTimeout(this.timer.timer);
 		this.timer.timer = setTimeout(() => {
 			for (let index = 0; index < items.length; index++) {
-				const element = items[index];
+				const element: any = items[index];
 				element.style.left = null;
 				element.style.top = null;
 			}
@@ -261,7 +275,7 @@ class Game {
 		this.timer.timerB = setTimeout(() => {
 			this.lotteryDrawing = false;
 			for (let index = 0; index < items.length; index++) {
-				const element = items[index];
+				const element: any = items[index];
 				element.style.left = `${itemPosition[index][1]*stepX}%`;
 				element.style.top = `${itemPosition[index][0] === 1 ? 0 : stepY*2}%`;
 				oldStyle && element.querySelector(`.${s.back}`).setAttribute('style', `${oldStyle}`);
@@ -270,7 +284,7 @@ class Game {
 	}
 
 
-	lottery = prize => {
+	lottery = async (prize: Prize) => {
 		const target = document.getElementById(this.targetId);
 		const items = target.querySelector(`.${s.wrap}`).children;
 		// 多触发点抽奖，启用自动抽奖时随机触发一个元素
@@ -281,13 +295,13 @@ class Game {
 
 		const element = items[activeElements].children[0];
 		
-		return Promise.resolve()
-			.then(() => this.distributePrize(element, prize))
-			.then(() => this.flip(element))
-			.then(() => dormancyFor(600))
-			.then(() => this.flipAll(180))
-			.then(() => dormancyFor(600))
-			.then(() => new Promise(resolve => resolve(prize)));
+		await Promise.resolve();
+		this.distributePrize(element, prize);
+		await this.flip(element);
+		await dormancyFor(600);
+		await this.flipAll(180);
+		await dormancyFor(600);
+		return await new Promise(resolve => resolve(prize));
 	};
 
 }

@@ -10,13 +10,13 @@ module.exports = [{
 	template: './games/Roulette/index.ejs'
 },{
 	name: 'boxroulette',
-	path: './games/BoxRoulette/index.js',
+	path: './games/BoxRoulette/index.ts',
 	templatename: '九宫格',
 	template: './games/BoxRoulette/index.ejs'
 },
 {
 	name: 'flipcard',
-	path: './games/FlipCard/index.js',
+	path: './games/FlipCard/index.ts',
 	templatename: '翻牌',
 	template: './games/FlipCard/index.ejs'
 },{

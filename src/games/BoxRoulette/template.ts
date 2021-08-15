@@ -2,6 +2,7 @@ import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
 const { inlineStyle } = htmlFactory;
 import { getFullNum } from './helper';
+import { Properties } from 'csstype';
 
 
 /**
@@ -10,7 +11,7 @@ import { getFullNum } from './helper';
  * @param {Array} modify
  * @returns
  */
-function renderModify(modify) {
+function renderModify(modify: Properties<0 | (string & {}), string & {}>[]) {
 
 	if (!modify || !Array.isArray(modify)) {
 		return '';
