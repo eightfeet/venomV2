@@ -211,7 +211,9 @@ class Game {
 	 * @memberof Game
 	 */
 	onCancel = (cancel) => () => {
-		cancel && cancel();
+		if (cancel instanceof Function) {
+			cancel();
+		}
 		this.reset();
 	}
 

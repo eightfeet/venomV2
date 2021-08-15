@@ -2,6 +2,7 @@ import { html } from 'common-tags';
 import { Prize, PrizeType } from '~/types/core';
 import { htmlFactory } from '@byhealth/walle';
 import s from './index.scss';
+import { Properties } from 'csstype';
 const { inlineStyle } = htmlFactory;
 
 export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
@@ -43,7 +44,7 @@ export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
     `;
 };
 
-export const renderModify = (modify: any[]) => {
+export const renderModify = (modify: Properties[]) => {
 	if (!modify || !Array.isArray(modify)) return '';
 	return html`
         ${modify.map(

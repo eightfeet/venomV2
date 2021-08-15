@@ -1,30 +1,69 @@
-import { ModalAnimation } from '@eightfeet/modal';
+import { AddressModalThemeType } from '@byhealth/walle/lib/modules/AddressModal/Address';
+import { ModalAnimation, ModalStyle } from '@eightfeet/modal';
+import { Properties } from 'csstype';
+
+interface StyleItem {
+  [keys: string]: Properties
+}
+
+export interface Modify {
+  modify?: Properties[]
+}
+
+export type GameTheme = StyleItem & Modify;
+
+export interface ResultModalStyle extends ModalStyle {
+  /*
+   * 奖品别名
+   */
+  prizeAlias?: Properties;
+  prizeName?: Properties;
+  awardMsg?: Properties;
+  prizeImg?: Properties;
+  memo?: Properties;
+  contentTop?: Properties;
+  contentBottom?: Properties;
+  submit?: Properties;
+  header?: Properties;
+  article?: Properties;
+  footer?: Properties;
+  modalTitle?: Properties;
+  contentWrap?: Properties;
+}
+
 
 export interface Theme {
   /**
    * 游戏皮肤
    */
-  GameTheme?: any;
+  GameTheme?: GameTheme;
   /**
    * 成功弹窗皮肤
    */
-  SuccessModalTheme?: any;
+  SuccessModalTheme?: ResultModalStyle & Modify;
   /**
    * 地址填写弹窗皮肤
    */
-  AddressModalTheme?: any;
+  AddressModalTheme?: AddressModalThemeType;
   /**
    * loading皮肤
    */
-  LoadingTheme?: any;
+  LoadingTheme?: {
+    overlay?: Properties;
+    content?: Properties;
+    vertices?: {
+        elements?: string[];
+        size?: string;
+    } & Properties;
+};
   /**
    * 失败弹窗
    */
-  FailedModalTheme?: any;
+  FailedModalTheme?: ResultModalStyle & Modify;
   /**
    * 弱提示
    */
-  MessageTheme?: any;
+  MessageTheme?: ModalStyle & Modify;
 }
 
 export interface CoreConfigType {
@@ -53,7 +92,22 @@ export interface CoreConfigType {
   /**
    * 保存地址
    */
-  saveAddress: (data: any) => Promise<any>;
+  saveAddress: (address: {
+    /** 详细地址 */
+    address: string;
+    /** 身份证号码 */
+    idcode?: string;
+    /** 收货人电话号码 */
+    phone: string;
+    /** 收货人姓名 */
+    receiver: string;
+    /** 省市区id */
+    regions: string;
+    /** 省市区名称 */
+    regionsName: string;
+    /** 验证码 */
+    verificationvode?: string | number;
+  }) => Promise<any>;
   /**
    * 奖品参数
    */

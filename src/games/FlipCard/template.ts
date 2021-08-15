@@ -1,7 +1,9 @@
-import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
 import { Properties } from 'csstype';
+import { GameTheme, Prize } from '~/types/core';
 const { inlineStyle } = htmlFactory;
+import s from './index.scss';
+
 
 
 /**
@@ -10,7 +12,7 @@ const { inlineStyle } = htmlFactory;
  * @param {Array} modify
  * @returns
  */
-function renderModify(modify: Properties<0 | (string & {}), string & {}>[]): string{
+function renderModify(modify: Properties[]): string{
 	if (!modify || !Array.isArray(modify)) {
 		return '';
 	}
@@ -32,7 +34,8 @@ function renderModify(modify: Properties<0 | (string & {}), string & {}>[]): str
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style, prizes) {
+export function renderGame(style: GameTheme, prizes: Prize[]) {
+	
 	const { wrap, cardCover, cardInside, cardWrap, modify } = style;
 	const prizeLength = prizes.length;
 	let dom = '';

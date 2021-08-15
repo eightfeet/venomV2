@@ -1,5 +1,7 @@
 import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
+import { GameTheme, Prize } from '~/types/core';
+import { Properties } from 'csstype';
 const { inlineStyle } = htmlFactory;
 
 /**
@@ -8,7 +10,7 @@ const { inlineStyle } = htmlFactory;
  * @param {Array} modify
  * @returns
  */
-function renderModify(modify) {
+function renderModify(modify: Properties[]) {
 	if (!modify || !Array.isArray(modify)) {
 		return '';
 	}
@@ -55,7 +57,7 @@ function renderGameInfo(style, prizes, id) {
 	</div>`;
 }
 
-function renderGamePrize(style, prizes) {
+function renderGamePrize(style: GameTheme, prizes: Prize[]) {
 	let dom = '';
 	const { gamePrizeName, gamePrizeImg, gameItem, game} = style;
 	const gamePrizeNameStyle = inlineStyle(gamePrizeName);
@@ -88,7 +90,7 @@ function renderGamePrize(style, prizes) {
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style, gamePrizes, prizes, id) {
+export function renderGame(style: GameTheme, gamePrizes: Prize[], prizes: Prize[], id: string) {
 	const { wrap, modify, startButton } = style;
 	const wrapStyle = inlineStyle(wrap);
 	const startButtonStyle = inlineStyle(startButton);

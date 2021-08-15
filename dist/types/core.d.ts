@@ -1,4 +1,61 @@
-import { ModalAnimation } from '@eightfeet/modal';
+import { AddressModalThemeType } from '@byhealth/walle/lib/modules/AddressModal/Address';
+import { ModalAnimation, ModalStyle } from '@eightfeet/modal';
+import { Properties } from 'csstype';
+interface StyleItem {
+    [keys: string]: Properties;
+}
+export interface Modify {
+    modify?: Properties[];
+}
+export declare type GameTheme = StyleItem & Modify;
+export interface ResultModalStyle extends ModalStyle {
+    prizeAlias?: Properties;
+    prizeName?: Properties;
+    awardMsg?: Properties;
+    prizeImg?: Properties;
+    memo?: Properties;
+    contentTop?: Properties;
+    contentBottom?: Properties;
+    submit?: Properties;
+    header?: Properties;
+    article?: Properties;
+    footer?: Properties;
+    modalTitle?: Properties;
+    contentWrap?: Properties;
+}
+export interface Theme {
+    /**
+     * 游戏皮肤
+     */
+    GameTheme?: GameTheme;
+    /**
+     * 成功弹窗皮肤
+     */
+    SuccessModalTheme?: ResultModalStyle & Modify;
+    /**
+     * 地址填写弹窗皮肤
+     */
+    AddressModalTheme?: AddressModalThemeType;
+    /**
+     * loading皮肤
+     */
+    LoadingTheme?: {
+        overlay?: Properties;
+        content?: Properties;
+        vertices?: {
+            elements?: string[];
+            size?: string;
+        } & Properties;
+    };
+    /**
+     * 失败弹窗
+     */
+    FailedModalTheme?: ResultModalStyle & Modify;
+    /**
+     * 弱提示
+     */
+    MessageTheme?: ModalStyle & Modify;
+}
 export interface CoreConfigType {
     /**
      * GameId 默认game-target-时间戳+100以内随机数
@@ -15,32 +72,7 @@ export interface CoreConfigType {
     /**
      * 皮肤配置
      */
-    style: {
-        /**
-         * 游戏皮肤
-         */
-        GameTheme?: any;
-        /**
-         * 成功弹窗皮肤
-         */
-        SuccessModalTheme?: any;
-        /**
-         * 地址填写弹窗皮肤
-         */
-        AddressModalTheme?: any;
-        /**
-         * loading皮肤
-         */
-        LoadingTheme?: any;
-        /**
-         * 失败弹窗
-         */
-        FailedModalTheme?: any;
-        /**
-         * 弱提示
-         */
-        MessageTheme?: any;
-    };
+    style: Theme;
     outerFrameId: string;
     /**
      * 启动抽奖方法 必填
@@ -49,7 +81,22 @@ export interface CoreConfigType {
     /**
      * 保存地址
      */
-    saveAddress: () => Promise<any>;
+    saveAddress: (address: {
+        /** 详细地址 */
+        address: string;
+        /** 身份证号码 */
+        idcode?: string;
+        /** 收货人电话号码 */
+        phone: string;
+        /** 收货人姓名 */
+        receiver: string;
+        /** 省市区id */
+        regions: string;
+        /** 省市区名称 */
+        regionsName: string;
+        /** 验证码 */
+        verificationvode?: string | number;
+    }) => Promise<any>;
     /**
      * 奖品参数
      */
@@ -77,7 +124,7 @@ export interface CoreConfigType {
     /**
      * 确定时的回调（确定或完成填写地址后）
      */
-    onEnsure?: () => void;
+    onEnsure?: (prize: Prize) => void;
     /**
      * 显示中奖
      */
@@ -257,3 +304,4 @@ export declare enum cardIdRequest {
      */
     NeverValidation = "4"
 }
+export {};

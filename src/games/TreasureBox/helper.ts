@@ -1,4 +1,6 @@
-export function handleGamePrizes(prizes, prizesRepeats) {
+import { Prize } from "~/types/core";
+
+export function handleGamePrizes(prizes: Prize[], prizesRepeats: number) {
 	let prizesOperation = [];
 	let prizesResult = [];
 	let repeats = 0;

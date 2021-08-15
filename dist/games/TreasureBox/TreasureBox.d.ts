@@ -1,5 +1,5 @@
 import { Loading } from '@byhealth/walle';
-import { Prize, CoreConfigType } from '~/types/core';
+import { Prize, CoreConfigType, GameTheme } from '~/types/core';
 import Core from '../Core';
 import 'swiper/swiper-bundle.css';
 interface TreasureBoxConfigType extends CoreConfigType {
@@ -8,9 +8,7 @@ declare class TreasureBox {
     targetId: string;
     emBase: number;
     prizes: Prize[];
-    GameTheme: {
-        [keys: string]: any;
-    };
+    GameTheme: GameTheme;
     parentId: string;
     core: Core;
     Loading: Loading;
