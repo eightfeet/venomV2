@@ -11,16 +11,26 @@ const { createDom, inlineStyle } = htmlFactory;
 import { renderGame } from './template';
 import s from './index.scss';
 import { getGameDataLength, supplementingData } from './helper';
-import { Prize } from '~/types/core';
+import { CoreConfigType, GameTheme, Prize } from '~/types/core';
+import { Properties } from 'csstype';
 
 const stamp = (new Date()).getTime();
+
+interface BoxRouletteTheme {
+	wrap?: Properties;
+	prize?: Properties;
+	gameImg?: Properties;
+	prizeAlias?: Properties;
+	activated?: Properties;
+	lotteryButton?: Properties;
+}
 
 class Game {
 	targetId: any;
 	emBase: any;
 	prizesLength: any;
 	prizes: any;
-	GameTheme: any;
+	GameTheme: GameTheme<BoxRouletteTheme>;
 	parentId: any;
 	core: Core;
 	Loading: any;
@@ -28,7 +38,7 @@ class Game {
 	historyPrizeInd: number;
 	buffer: number;
 	lotteryDrawing: boolean;
-	constructor(config){
+	constructor(config: CoreConfigType<BoxRouletteTheme>){
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.emBase = emBase;

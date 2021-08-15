@@ -21,6 +21,7 @@ const { createDom, inlineStyle } = htmlFactory;
 import { renderGame } from "./template";
 import { CoreConfigType, GameTheme, Prize } from "~/types/core";
 import { Arr, KdShuffle } from "./helper";
+import { Properties } from "csstype";
 
 // 设定必要初始值
 const stepX = 16.66666;
@@ -29,11 +30,18 @@ const stepY = 25;
 let oldStyle = null;
 const stamp = new Date().getTime();
 
+interface FlipCardTheme {
+	wrap?: Properties;
+	cardCover?: Properties;
+	cardInside?: Properties;
+	cardWrap?: Properties;
+}
+
 class Game {
 	targetId: string;
 	timer: { timerDelay: any; timer: any; timerB: any };
 	prizes: Prize[];
-	GameTheme: GameTheme;
+	GameTheme: GameTheme<FlipCardTheme>;
 	parentId: string;
 	emBase: number;
 	core: Core;
@@ -41,7 +49,7 @@ class Game {
 	destroy: any;
 	activeElements: number | null;
 	lotteryDrawing: boolean;
-	constructor(config: CoreConfigType) {
+	constructor(config: CoreConfigType<FlipCardTheme>) {
 		const {
 			style,
 			prizes,

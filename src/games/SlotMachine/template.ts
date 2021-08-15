@@ -1,6 +1,6 @@
 import s from './index.scss';
 import { htmlFactory } from '@byhealth/walle';
-import { GameTheme, Prize } from '~/types/core';
+import { Prize } from '~/types/core';
 import { Properties } from 'csstype';
 const { inlineStyle } = htmlFactory;
 
@@ -57,7 +57,7 @@ function renderGameInfo(style, prizes, id) {
 	</div>`;
 }
 
-function renderGamePrize(style: GameTheme, prizes: Prize[]) {
+function renderGamePrize(style, prizes: Prize[]) {
 	let dom = '';
 	const { gamePrizeName, gamePrizeImg, gameItem, game} = style;
 	const gamePrizeNameStyle = inlineStyle(gamePrizeName);
@@ -90,7 +90,7 @@ function renderGamePrize(style: GameTheme, prizes: Prize[]) {
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style: GameTheme, gamePrizes: Prize[], prizes: Prize[], id: string) {
+export function renderGame(style, gamePrizes: Prize[], prizes: Prize[], id: string) {
 	const { wrap, modify, startButton } = style;
 	const wrapStyle = inlineStyle(wrap);
 	const startButtonStyle = inlineStyle(startButton);

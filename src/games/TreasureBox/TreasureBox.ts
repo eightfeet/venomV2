@@ -9,6 +9,7 @@ import Core from '../Core';
 import s from './index.scss';
 import { renderGame } from './template';
 import Swiper from 'swiper';
+import { Properties } from 'csstype';
 import 'swiper/swiper-bundle.css';
 
 const { dormancyFor } = tools;
@@ -17,19 +18,23 @@ const { createDom } = htmlFactory;
 const stamp = new Date().getTime();
 let gameTimer = null;
 
-interface TreasureBoxConfigType extends CoreConfigType {}
+interface TreasureBoxThemeType {
+	wrap?: Properties;
+	prizeImage?: Properties;
+	prizeTitle?: Properties;
+}
 
 class TreasureBox {
 	targetId: string;
 	emBase: number;
 	prizes: Prize[];
-	GameTheme: GameTheme;
+	GameTheme: GameTheme<TreasureBoxThemeType>;
 	parentId: string;
 	core: Core;
 	Loading: Loading;
 	target: HTMLElement;
 	gamePrizes: Prize[];
-	constructor(config: TreasureBoxConfigType) {
+	constructor(config: CoreConfigType<TreasureBoxThemeType>) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||

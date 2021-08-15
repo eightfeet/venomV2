@@ -1,6 +1,6 @@
 import { htmlFactory } from '@byhealth/walle';
 import { Properties } from 'csstype';
-import { GameTheme, Prize } from '~/types/core';
+import { Prize } from '~/types/core';
 const { inlineStyle } = htmlFactory;
 import s from './index.scss';
 
@@ -34,7 +34,7 @@ function renderModify(modify: Properties[]): string{
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style: GameTheme, prizes: Prize[]) {
+export function renderGame(style, prizes: Prize[]) {
 	
 	const { wrap, cardCover, cardInside, cardWrap, modify } = style;
 	const prizeLength = prizes.length;

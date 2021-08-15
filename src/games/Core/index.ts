@@ -35,7 +35,7 @@ class Core {
 	onShowFailed: (prize: Prize) => void;
 	onShowAddress: () => void;
 
-	constructor(config: CoreConfigType) {
+	constructor(config: CoreConfigType<{}>) {
 		const {
 			targetId,
 			parentId,

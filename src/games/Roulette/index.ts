@@ -13,21 +13,32 @@ import {
 	htmlFactory,
 	tools
 } from '@byhealth/walle';
+import { Properties } from 'csstype';
 import s from './index.scss';
 
 const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
-import { CoreConfigType, Prize } from '~/types/core';
+import { CoreConfigType, GameTheme, Prize } from '~/types/core';
 
 const stamp = new Date().getTime();
+
+interface RouletteThemeType {
+	wrap?: Properties;
+	gameImg?: Properties;
+	prizeAlias?: Properties;
+	needle?: Properties;
+	lotteryButton?: Properties;
+	wheel?: Properties;
+	divide?: Properties;
+}
 
 class Game {
 	targetId: any;
 	emBase: any;
 	prizes: any;
-	GameTheme: any;
+	GameTheme: GameTheme<RouletteThemeType>;
 	parentId: any;
 	core: Core;
 	Loading: any;
@@ -36,7 +47,7 @@ class Game {
 	activeElements: any;
 	lotteryDrawing: boolean;
 	roundTimer: any;
-	constructor(config: CoreConfigType) {
+	constructor(config: CoreConfigType<RouletteThemeType>) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||

@@ -11,17 +11,33 @@ const { onceTransitionEnd } = webAnimation;
 
 import { renderGame } from './template';
 import { handleGamePrizes } from './helper';
-import { CoreConfigType } from '~/types/core';
+import { CoreConfigType, GameTheme } from '~/types/core';
+import { Properties } from 'csstype';
 
 const stamp = (new Date()).getTime();
 
 let gameTimer = null;
 
+interface SlotMachineTheme {
+	gamePrizeName?: Properties;
+	gamePrizeImg?: Properties;
+	gameItem?: Properties;
+	game?: Properties;
+	gameInfoPrizeImg?: Properties;
+	gameInfoPrizeName?: Properties;
+	showGameInfoButton?: Properties;
+	gameInfoWrap?: Properties;
+	gameInfoContent?: Properties;
+	gameInfoLayout?: Properties;
+	gameInfoPrizeItem?: Properties;
+  }
+  
+
 class Game {
 	targetId: any;
 	emBase: any;
 	prizes: any;
-	GameTheme: any;
+	GameTheme: GameTheme<SlotMachineTheme>;
 	parentId: any;
 	core: Core;
 	Loading: any;
@@ -32,7 +48,7 @@ class Game {
 	repeats: number;
 	gamePrizes: any[];
 	slotwrap: any;
-	constructor(config: CoreConfigType) {
+	constructor(config: CoreConfigType<SlotMachineTheme>) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.emBase = emBase;
@@ -52,7 +68,7 @@ class Game {
 		this.prizesRepeats = 6; // 每组奖品重复的次数
 		this.repeats = 1;
 		this.gamePrizes = [];
-
+		
 		this.renderGame();
 	}
 

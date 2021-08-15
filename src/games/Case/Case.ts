@@ -5,7 +5,7 @@ if (window.Promise === undefined) {
 import Core from '../Core';
 import { Loading, htmlFactory, tools } from '@byhealth/walle';
 import s from './index.scss';
-import { Prize, CoreConfigType } from '~/types/core';
+import { Prize, CoreConfigType, GameTheme } from '~/types/core';
 const { dormancyFor } = tools;
 const { createDom } = htmlFactory;
 
@@ -13,7 +13,7 @@ const stamp = new Date().getTime();
 
 let gameTimer = null;
 
-interface CaseConfigType extends CoreConfigType {
+interface CaseTheme {
 
 }
 
@@ -21,13 +21,13 @@ class Case {
 	targetId: string;
 	emBase: number;
 	prizes: Prize[];
-	GameTheme: { [keys: string]: any };
+	GameTheme: GameTheme<CaseTheme>;
 	parentId: string;
 	core: Core;
 	Loading: Loading;
 	target: HTMLElement;
 	gamePrizes: Prize[];
-	constructor(config: CaseConfigType) {
+	constructor(config: CoreConfigType<CaseTheme>) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||
