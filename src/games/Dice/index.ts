@@ -16,6 +16,16 @@ const stamp = (new Date()).getTime();
 let timer = null;
 
 class Game {
+	targetId: any;
+	emBase: any;
+	prizes: any;
+	GameTheme: any;
+	parentId: any;
+	core: Core;
+	Loading: any;
+	destroy: any;
+	oldDge: number;
+	activeElements: any;
 	constructor(config){
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
@@ -52,11 +62,12 @@ class Game {
 			.then(() => {
 				const target = document.getElementById(this.targetId);
 				target.classList.add(s.target);
-				const diceWidth = target.querySelector(`.${s.dice}`).offsetWidth;
+				const diceDom: any = target.querySelector(`.${s.dice}`);
+				const diceWidth = diceDom.offsetWidth;
 				const innerDom = target.getElementsByClassName(s.side);
 
 				for (let index = 0; index < innerDom.length; index++) {
-					const element = innerDom[index];
+					const element: any = innerDom[index];
 					const className = element.getAttribute('class');
 					if (className.indexOf(s.front) !== -1) {
 						if (className.indexOf(s.inner) === -1) {
@@ -106,9 +117,9 @@ class Game {
 			})
 			.then(() => {
 				const target = document.getElementById(this.targetId);
-				const lotterybtn = target.querySelector(`.${s.dice}`);
-				const showprizebtn = target.querySelector(`.${s.toggleprize}`);
-				const prizeslayout = target.querySelector(`.${s.prizeslayout}`);
+				const lotterybtn: any = target.querySelector(`.${s.dice}`);
+				const showprizebtn: any = target.querySelector(`.${s.toggleprize}`);
+				const prizeslayout: any = target.querySelector(`.${s.prizeslayout}`);
 				lotterybtn.onclick = (e) => {
 					e.preventDefault();
 					return this.core.lottery();
@@ -163,9 +174,10 @@ class Game {
 		}
 
 		const target = document.getElementById(this.targetId);
-		const platformEle = target.querySelector(`.${s.platform}`);
+		const platformEle: any = target.querySelector(`.${s.platform}`);
 		platformEle.classList.remove(s.stop);
 		platformEle.classList.add(s.playing);
+		const diceDom: any = target.querySelector(`.${s.dice}`);
 
 		window.clearTimeout(timer);
 		timer = setTimeout(() => {
@@ -193,13 +205,12 @@ class Game {
 					break;
 			}
 					
-			target.querySelector(`.${s.dice}`).style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
-			target.querySelector(`.${s.dice}`).style.webkitTransform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+			diceDom.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+			diceDom.style.webkitTransform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
 					
 			platformEle.style.transform = 'translate3d(0,0, 0px)';
 			platformEle.style.webkitTransform = 'translate3d(0,0, 0px)';
 					
-			console.log('结果', prize);
 			resolve(prize);
 		}, 1120);
 	});

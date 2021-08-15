@@ -103,10 +103,10 @@ class Game {
 	 * 初始化翻牌模板
 	 * @memberof Game
 	 */
-	renderGame = () => {
+	renderGame = async () => {
 		const prizesLength = this.prizes.length > 6 ? 6 : this.prizes.length;
 		const itemPosition = Arr[prizesLength];
-		return createDom(
+		await createDom(
 			renderGame(
 				this.GameTheme,
 				(this.prizes.length > 6 ? this.prizes.slice(0, 6) : this.prizes)
@@ -114,27 +114,23 @@ class Game {
 			this.targetId,
 			this.parentId,
 			this.emBase
-		)
-			.then(() => {
-				const target = document.getElementById(this.targetId);
-				target.classList.add(s.target);
-				return dormancyFor(200);
-			})
-			.then(() => {
-				const target = document.getElementById(this.targetId);
-				const items = target.querySelector(`.${s.wrap}`).children;
-				for (let index = 0; index < items.length; index++) {
-					const element: any = items[index];
-					if (element) {
-						element.style.left = `${itemPosition[index][1]*stepX}%`;
-						element.style.top = `${itemPosition[index][0] === 1 ? 0 : stepY*2}%`;
-						element.children[0].onclick = () => {
-							this.activeElements = index;
-							return this.core.lottery();
-						};
-					}
-				}
-			});
+		);
+		const target = document.getElementById(this.targetId);
+		target.classList.add(s.target);
+		await dormancyFor(200);
+		const target_1 = document.getElementById(this.targetId);
+		const items = target_1.querySelector(`.${s.wrap}`).children;
+		for (let index = 0; index < items.length; index++) {
+			const element: any = items[index];
+			if (element) {
+				element.style.left = `${itemPosition[index][1] * stepX}%`;
+				element.style.top = `${itemPosition[index][0] === 1 ? 0 : stepY * 2}%`;
+				element.children[0].onclick = () => {
+					this.activeElements = index;
+					return this.core.lottery();
+				};
+			}
+		}
 	}
 
 
@@ -143,8 +139,10 @@ class Game {
 	 * @param { function } cancel
 	 * @memberof Game
 	 */
-	onCancel = (cancel) => () => {
-		cancel && cancel();
+	onCancel = (cancel: () => void) => () => {
+		if ( cancel instanceof Function) {
+			cancel();
+		}
 		this.reset();
 	}
 
@@ -153,8 +151,10 @@ class Game {
 	 * @param { function } cancel
 	 * @memberof Game
 	 */
-	onEnsure = (ensure) => (prize) => {
-		ensure && ensure(prize);
+	onEnsure = (ensure: (prize: Prize) => void) => (prize: Prize) => {
+		if ( ensure instanceof Function) {
+			ensure(prize);
+		}
 		if (prize.receiveType !== 2) {
 			this.reset();
 		}
@@ -166,7 +166,7 @@ class Game {
 	 * @memberof Game
 	 */
 	onSaveAddress = (saveAddress) => (data: any) => {
-		if (saveAddress && typeof saveAddress === 'function') {
+		if ( saveAddress instanceof Function) {
 			return saveAddress(data)
 				.then(() => this.reset());
 		}

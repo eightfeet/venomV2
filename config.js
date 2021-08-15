@@ -21,17 +21,17 @@ module.exports = [{
 	template: './games/FlipCard/index.ejs'
 },{
 	name: 'dice',
-	path: './games/Dice/index.js',
+	path: './games/Dice/index.ts',
 	templatename: '掷骰子',
 	template: './games/Dice/index.ejs'
 },{
 	name: 'slotmachine',
-	path: './games/SlotMachine/index.js',
+	path: './games/SlotMachine/index.ts',
 	templatename: '老虎机',
 	template: './games/SlotMachine/index.ejs'
 },{
 	name: 'redenvelope',
-	path: './games/RedEnvelope/index.js',
+	path: './games/RedEnvelope/index.ts',
 	templatename: '拆红包',
 	template: './games/RedEnvelope/index.ejs'
 },{

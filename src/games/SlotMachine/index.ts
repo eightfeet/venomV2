@@ -11,13 +11,28 @@ const { onceTransitionEnd } = webAnimation;
 
 import { renderGame } from './template';
 import { handleGamePrizes } from './helper';
+import { CoreConfigType } from '~/types/core';
 
 const stamp = (new Date()).getTime();
 
 let gameTimer = null;
 
 class Game {
-	constructor(config) {
+	targetId: any;
+	emBase: any;
+	prizes: any;
+	GameTheme: any;
+	parentId: any;
+	core: Core;
+	Loading: any;
+	target: any;
+	itemHeight: any;
+	wrapHeight: any;
+	prizesRepeats: number;
+	repeats: number;
+	gamePrizes: any[];
+	slotwrap: any;
+	constructor(config: CoreConfigType) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.emBase = emBase;
@@ -46,12 +61,12 @@ class Game {
 	 * 初始化翻牌模板
 	 * @memberof Game
 	 */
-	renderGame = () => {
+	renderGame = async () => {
 		const { prizesResult, repeats} = handleGamePrizes(this.prizes, this.prizesRepeats);
 		this.repeats = repeats;
 		this.gamePrizes = prizesResult;
 
-		return createDom(
+		await createDom(
 			renderGame(
 				this.GameTheme,
 				this.gamePrizes,
@@ -61,47 +76,40 @@ class Game {
 			this.targetId,
 			this.parentId,
 			this.emBase
-		)
-			.then(() => {
-				this.target = document.getElementById(this.targetId);
-				this.slotwrap = this.target.querySelector(`.${s.slotwrap}`);
-				this.target.classList.add(s.target);
-				this.itemHeight = this.target.querySelector(`.${s.game}`).offsetHeight;
-				this.wrapHeight = this.itemHeight * this.gamePrizes.length;
-				this.slotwrap.style.height = `${this.wrapHeight}px`;
-				
-				return dormancyFor(50);
-			})
-			.then(() => {
-				this.slotwrap.style.visibility = 'visible';
-				const startbtn = this.target.querySelector(`.${s.startbtn}`);
-				const showprizebtn = this.target.querySelector(`.${s.toggleprize}`);
-				const prizeslayout = this.target.querySelector(`.${s.prizeslayout}`);
-
-				startbtn.onclick = e => {
-					e.preventDefault();
-					return this.core.lottery();
-				};
-
-				let showPrize = false;
-				const toggle = () => {
-					if (showPrize) {
-						prizeslayout.classList.remove(s.showprizes);
-						showprizebtn.style.display = 'block';
-						showPrize = false;
-					} else {
-						prizeslayout.classList.add(s.showprizes);
-						showprizebtn.style.display = 'none';
-						showPrize = true;
-					}
-				};
-				showprizebtn.onclick = () => {
-					toggle();
-				};
-				prizeslayout.onclick = () => {
-					toggle();
-				};
-			});
+		);
+		this.target = document.getElementById(this.targetId);
+		this.slotwrap = this.target.querySelector(`.${s.slotwrap}`);
+		this.target.classList.add(s.target);
+		this.itemHeight = this.target.querySelector(`.${s.game}`).offsetHeight;
+		this.wrapHeight = this.itemHeight * this.gamePrizes.length;
+		this.slotwrap.style.height = `${this.wrapHeight}px`;
+		await dormancyFor(50);
+		this.slotwrap.style.visibility = 'visible';
+		const startbtn = this.target.querySelector(`.${s.startbtn}`);
+		const showprizebtn = this.target.querySelector(`.${s.toggleprize}`);
+		const prizeslayout = this.target.querySelector(`.${s.prizeslayout}`);
+		startbtn.onclick = (e: { preventDefault: () => void; }) => {
+			e.preventDefault();
+			return this.core.lottery();
+		};
+		let showPrize = false;
+		const toggle = () => {
+			if (showPrize) {
+				prizeslayout.classList.remove(s.showprizes);
+				showprizebtn.style.display = 'block';
+				showPrize = false;
+			} else {
+				prizeslayout.classList.add(s.showprizes);
+				showprizebtn.style.display = 'none';
+				showPrize = true;
+			}
+		};
+		showprizebtn.onclick = () => {
+			toggle();
+		};
+		prizeslayout.onclick = () => {
+			toggle();
+		};
 	}
 
 	destroy = () => {
@@ -138,7 +146,7 @@ class Game {
 
 		if (prizeIndex !== null) {
 			Promise.resolve()
-				.then(() => {
+				.then(async () => {
 					let beginningIndex = null;
 					let endingIndex = null;
 					for (let index = this.gamePrizes.length - 1; index > 0; index--) {
@@ -161,19 +169,13 @@ class Game {
 					const beginningPositionY = beginningIndex * this.itemHeight;
 					this.slotwrap.style.webkitTransition = `top ${this.gamePrizes.length*115}ms cubic-bezier(0.77, 0, 0.21, 1) 0s`;
 					this.slotwrap.style.top = `-${endingPositionY + this.itemHeight/4}px`;
-					return Promise.resolve()
-						.then(() => {
-							return onceTransitionEnd(this.slotwrap);
-						})
-						.then(() => {
-							this.slotwrap.style.webkitTransition = 'top 800ms cubic-bezier(0, 0, 0.42, 1) 0s';
-							this.slotwrap.style.top = `-${endingPositionY}px`;
-							return onceTransitionEnd(this.slotwrap);
-						})
-						.then(() => {
-							this.slotwrap.style.webkitTransition = null;
-							this.slotwrap.style.top = `-${beginningPositionY}px`;
-						});
+					await Promise.resolve();
+					await onceTransitionEnd(this.slotwrap);
+					this.slotwrap.style.webkitTransition = 'top 800ms cubic-bezier(0, 0, 0.42, 1) 0s';
+					this.slotwrap.style.top = `-${endingPositionY}px`;
+					await onceTransitionEnd(this.slotwrap);
+					this.slotwrap.style.webkitTransition = null;
+					this.slotwrap.style.top = `-${beginningPositionY}px`;
 				})
 				.then(() => resolve(prize));
 		}

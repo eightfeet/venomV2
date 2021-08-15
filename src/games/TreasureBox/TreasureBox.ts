@@ -8,9 +8,7 @@ import { Prize, CoreConfigType } from '~/types/core';
 import Core from '../Core';
 import s from './index.scss';
 import { renderGame } from './template';
-// import Swiper JS
 import Swiper from 'swiper';
-// import Swiper styles
 import 'swiper/swiper-bundle.css';
 
 const { dormancyFor } = tools;
@@ -70,7 +68,7 @@ class TreasureBox {
 			this.emBase
 		);
 		if (this.gamePrizes.length > 4) {
-			const swiper = new Swiper(`.${s.prizebox}`, {
+			new Swiper(`.${s.prizebox}`, {
 				slidesPerView: 4,
 				loop: true
 			});

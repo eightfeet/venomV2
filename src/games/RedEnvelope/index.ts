@@ -14,6 +14,21 @@ import { renderGame } from './template';
 const stamp = (new Date()).getTime();
 
 class Game {
+	targetId: any;
+	emBase: any;
+	prizes: any;
+	GameTheme: any;
+	parentId: any;
+	core: Core;
+	Loading: any;
+	target: any;
+	itemHeight: any;
+	wrapHeight: any;
+	prizesRepeats: number;
+	repeats: number;
+	gamePrizes: any[];
+	disableReset: boolean;
+	config: any;
 	constructor(config) {
 		const { style, prizes, targetId, parentId, emBase, onCancel, onEnsure, saveAddress } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
@@ -69,8 +84,8 @@ class Game {
 				const startbtn = this.target.querySelector(`.${s.startbutton}`);
 				startbtn.onclick = () => this.core.lottery();
 				const target = document.getElementById(this.targetId);
-				const showprizebtn = target.querySelector(`.${s.toggleprize}`);
-				const prizeslayout = target.querySelector(`.${s.prizeslayout}`);
+				const showprizebtn: any = target.querySelector(`.${s.toggleprize}`);
+				const prizeslayout: any = target.querySelector(`.${s.prizeslayout}`);
 
 				let showPrize = false;
 				const toggle = () => {
@@ -178,7 +193,7 @@ class Game {
 						ensurebtn.classList.remove(s.hide);
 						ensurebtn.onclick = () => {
 							if (prize.receiveType === 2) {
-								this.core.handleSaveAddress(() => this.onEnsure(this.config.onEnsure)(prize));
+								this.core.handleSaveAddress(() => this.onEnsure(this.config.onEnsure)(prize), undefined);
 							} else {
 								this.onEnsure(this.config.onEnsure)(prize);
 							}
