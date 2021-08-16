@@ -183,6 +183,8 @@ class Core {
 		this.Loading.reset();
 		const mobileSelect = document.querySelector('.mobileSelect');
 		mobileSelect && mobileSelect.parentNode.removeChild(mobileSelect);
+		// 销毁地址选择
+		this.AddressModal?.AddressPicker?.destroy();
 		Promise.all([
 			removeDom(this.targetId),
 			removeDom(this.Loading.id),
