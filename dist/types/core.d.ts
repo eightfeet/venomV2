@@ -191,10 +191,10 @@ export interface CoreConfigType<T> {
 export interface Prize {
     /**
      * 奖品id
-     * @type {string}
+     * @type {string | number}
      * @memberof Prize
      */
-    prizeId: string;
+    prizeId: string | number;
     /**
      * 奖品类型 0 未中奖, 1 实物, 2 虚拟
      * @type {number}
