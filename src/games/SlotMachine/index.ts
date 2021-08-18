@@ -11,8 +11,12 @@ const { onceTransitionEnd } = webAnimation;
 
 import { renderGame } from './template';
 import { handleGamePrizes } from './helper';
-import { CoreConfigType, GameTheme } from '~/types/core';
 import { Properties } from 'csstype';
+
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export type GameThemeType = GameTheme<SlotMachineTheme>;
+export type GameConfigType = CoreConfigType<SlotMachineTheme>;
+export type PrizeType = Prize;
 
 const stamp = (new Date()).getTime();
 
@@ -37,7 +41,7 @@ class Game {
 	targetId: any;
 	emBase: any;
 	prizes: any;
-	GameTheme: GameTheme<SlotMachineTheme>;
+	GameTheme: GameThemeType;
 	parentId: any;
 	core: Core;
 	Loading: any;
@@ -48,7 +52,7 @@ class Game {
 	repeats: number;
 	gamePrizes: any[];
 	slotwrap: any;
-	constructor(config: CoreConfigType<SlotMachineTheme>) {
+	constructor(config: GameConfigType) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.emBase = emBase;

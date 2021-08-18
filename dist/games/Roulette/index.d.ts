@@ -1,12 +1,25 @@
 import Core from '../Core';
 import { Loading, AddressModal, NoticeModal, validate, Message, Modal } from '@byhealth/walle';
-declare const inlineStyle: (style: import("csstype").Properties<0 | (string & {}), string & {}>) => string;
-import { CoreConfigType, Prize } from '~/types/core';
+import { Properties } from 'csstype';
+declare const inlineStyle: (style: Properties<0 | (string & {}), string & {}>) => string;
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export declare type GameThemeType = GameTheme<RouletteThemeType>;
+export declare type GameConfigType = CoreConfigType<RouletteThemeType>;
+export declare type PrizeType = Prize;
+interface RouletteThemeType {
+    wrap?: Properties;
+    gameImg?: Properties;
+    prizeAlias?: Properties;
+    needle?: Properties;
+    lotteryButton?: Properties;
+    wheel?: Properties;
+    divide?: Properties;
+}
 declare class Game {
     targetId: any;
     emBase: any;
     prizes: any;
-    GameTheme: any;
+    GameTheme: GameThemeType;
     parentId: any;
     core: Core;
     Loading: any;
@@ -15,7 +28,7 @@ declare class Game {
     activeElements: any;
     lotteryDrawing: boolean;
     roundTimer: any;
-    constructor(config: CoreConfigType);
+    constructor(config: GameConfigType);
     /**
      *
      * 初始化转盘模板

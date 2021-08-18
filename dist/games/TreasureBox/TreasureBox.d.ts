@@ -1,20 +1,27 @@
 import { Loading } from '@byhealth/walle';
-import { Prize, CoreConfigType, GameTheme } from '~/types/core';
 import Core from '../Core';
+import { Properties } from 'csstype';
 import 'swiper/swiper-bundle.css';
-interface TreasureBoxConfigType extends CoreConfigType {
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export declare type GameThemeType = GameTheme<TreasureBoxThemeType>;
+export declare type GameConfigType = CoreConfigType<TreasureBoxThemeType>;
+export declare type PrizeType = Prize;
+interface TreasureBoxThemeType {
+    wrap?: Properties;
+    prizeImage?: Properties;
+    prizeTitle?: Properties;
 }
 declare class TreasureBox {
     targetId: string;
     emBase: number;
     prizes: Prize[];
-    GameTheme: GameTheme;
+    GameTheme: GameThemeType;
     parentId: string;
     core: Core;
     Loading: Loading;
     target: HTMLElement;
     gamePrizes: Prize[];
-    constructor(config: TreasureBoxConfigType);
+    constructor(config: GameConfigType);
     /**
      *
      * 初始化项目模板

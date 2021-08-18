@@ -1,21 +1,22 @@
 import Core from '../Core';
 import { Loading } from '@byhealth/walle';
-import { Prize, CoreConfigType } from '~/types/core';
-interface CaseConfigType extends CoreConfigType {
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export declare type GameThemeType = GameTheme<CaseTheme>;
+export declare type GameConfigType = CoreConfigType<CaseTheme>;
+export declare type PrizeType = Prize;
+interface CaseTheme {
 }
 declare class Case {
     targetId: string;
     emBase: number;
     prizes: Prize[];
-    GameTheme: {
-        [keys: string]: any;
-    };
+    GameTheme: GameThemeType;
     parentId: string;
     core: Core;
     Loading: Loading;
     target: HTMLElement;
     gamePrizes: Prize[];
-    constructor(config: CaseConfigType);
+    constructor(config: GameConfigType);
     /**
      *
      * 初始化翻牌模板

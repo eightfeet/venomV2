@@ -21,7 +21,7 @@ declare class Core {
     onShowSuccess: (prize: Prize) => void;
     onShowFailed: (prize: Prize) => void;
     onShowAddress: () => void;
-    constructor(config: CoreConfigType);
+    constructor(config: CoreConfigType<{}>);
     /**
      * 放弃中奖结果时重置游戏
      * @param { Function } cancel 承接放弃中奖结果方法

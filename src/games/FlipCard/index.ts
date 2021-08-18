@@ -19,9 +19,13 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from "./template";
-import { CoreConfigType, GameTheme, Prize } from "~/types/core";
 import { Arr, KdShuffle } from "./helper";
 import { Properties } from "csstype";
+
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export type GameThemeType = GameTheme<FlipCardTheme>;
+export type GameConfigType = CoreConfigType<FlipCardTheme>;
+export type PrizeType = Prize;
 
 // 设定必要初始值
 const stepX = 16.66666;
@@ -41,7 +45,7 @@ class Game {
 	targetId: string;
 	timer: { timerDelay: any; timer: any; timerB: any };
 	prizes: Prize[];
-	GameTheme: GameTheme<FlipCardTheme>;
+	GameTheme: GameThemeType;
 	parentId: string;
 	emBase: number;
 	core: Core;
@@ -49,7 +53,7 @@ class Game {
 	destroy: any;
 	activeElements: number | null;
 	lotteryDrawing: boolean;
-	constructor(config: CoreConfigType<FlipCardTheme>) {
+	constructor(config: GameConfigType) {
 		const {
 			style,
 			prizes,

@@ -20,7 +20,11 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
-import { CoreConfigType, GameTheme, Prize } from '~/types/core';
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export type GameThemeType = GameTheme<RouletteThemeType>;
+export type GameConfigType = CoreConfigType<RouletteThemeType>;
+export type PrizeType = Prize;
+
 
 const stamp = new Date().getTime();
 
@@ -34,11 +38,12 @@ interface RouletteThemeType {
 	divide?: Properties;
 }
 
+
 class Game {
 	targetId: any;
 	emBase: any;
 	prizes: any;
-	GameTheme: GameTheme<RouletteThemeType>;
+	GameTheme: GameThemeType;
 	parentId: any;
 	core: Core;
 	Loading: any;
@@ -47,7 +52,7 @@ class Game {
 	activeElements: any;
 	lotteryDrawing: boolean;
 	roundTimer: any;
-	constructor(config: CoreConfigType<RouletteThemeType>) {
+	constructor(config: GameConfigType) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||

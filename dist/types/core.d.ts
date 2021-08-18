@@ -7,7 +7,7 @@ interface StyleItem {
 export interface Modify {
     modify?: Properties[];
 }
-export declare type GameTheme = StyleItem & Modify;
+export declare type GameTheme<T> = StyleItem & Modify & T;
 export interface ResultModalStyle extends ModalStyle {
     prizeAlias?: Properties;
     prizeName?: Properties;
@@ -23,11 +23,11 @@ export interface ResultModalStyle extends ModalStyle {
     modalTitle?: Properties;
     contentWrap?: Properties;
 }
-export interface Theme {
+export interface Theme<T> {
     /**
      * 游戏皮肤
      */
-    GameTheme?: GameTheme;
+    GameTheme?: GameTheme<T>;
     /**
      * 成功弹窗皮肤
      */
@@ -56,7 +56,7 @@ export interface Theme {
      */
     MessageTheme?: ModalStyle & Modify;
 }
-export interface CoreConfigType {
+export interface CoreConfigType<T> {
     /**
      * GameId 默认game-target-时间戳+100以内随机数
      */
@@ -72,7 +72,7 @@ export interface CoreConfigType {
     /**
      * 皮肤配置
      */
-    style: Theme;
+    style: Theme<T>;
     outerFrameId: string;
     /**
      * 启动抽奖方法 必填

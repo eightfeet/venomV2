@@ -3,7 +3,6 @@ if (window.Promise === undefined) {
 }
 
 import { Loading, htmlFactory, tools } from '@byhealth/walle';
-import { Prize, CoreConfigType, GameTheme } from '~/types/core';
 
 import Core from '../Core';
 import s from './index.scss';
@@ -11,6 +10,11 @@ import { renderGame } from './template';
 import Swiper from 'swiper';
 import { Properties } from 'csstype';
 import 'swiper/swiper-bundle.css';
+
+import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+export type GameThemeType = GameTheme<TreasureBoxThemeType>;
+export type GameConfigType = CoreConfigType<TreasureBoxThemeType>;
+export type PrizeType = Prize;
 
 const { dormancyFor } = tools;
 const { createDom } = htmlFactory;
@@ -28,13 +32,13 @@ class TreasureBox {
 	targetId: string;
 	emBase: number;
 	prizes: Prize[];
-	GameTheme: GameTheme<TreasureBoxThemeType>;
+	GameTheme: GameThemeType
 	parentId: string;
 	core: Core;
 	Loading: Loading;
 	target: HTMLElement;
 	gamePrizes: Prize[];
-	constructor(config: CoreConfigType<TreasureBoxThemeType>) {
+	constructor(config: GameConfigType) {
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId =
 			targetId ||
