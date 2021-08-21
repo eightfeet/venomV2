@@ -48,5 +48,5 @@ export function renderGame(style, prizes: Prize[]) {
             </div>
       </div>`;
 	}
-	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap}" style="${wrap && inlineStyle(wrap)}">${dom}</div>`;
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap}" style="${wrap && inlineStyle(wrap)}">${dom}</div>`;
 }

@@ -36,12 +36,12 @@ window.themedata1 = {
     "gameInfoPrizeTag": {
       "color": "green"
     },
-    "dice": {
-      "width": "5em",
-      "height": "5em",
-      "left": "6em",
-      "top": "6em"
-    },
+    // "dice": {
+    //   "width": "5em",
+    //   "height": "5em",
+    //   "left": "6em",
+    //   "top": "6em"
+    // },
     "side": {
       "backgroundColor": "#4caf50",
       "boxShadow": "inset 0 0 0.4em #0fa40f"

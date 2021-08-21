@@ -80,7 +80,7 @@ export function renderGame(style, prizes, id) {
 	let dom = `
 	<div class="${s.ui_dado}">
 		<div class="${s.platform}">
-			<div class="${s.dice}" style="${diceStyle}">
+			<div class="${s.dice}" style="width:35%; height:35%; ${diceStyle || ''}">
 				<div style="${sideStyle}" class="${s.side} ${s.front}">
 					<div style="${dotStyle}" class="${s.dot} ${s.center}"></div>
 				</div>
@@ -128,7 +128,7 @@ export function renderGame(style, prizes, id) {
 	</div>
 	`;
 
-	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
 	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 	${renderGameInfo(style, prizes, id)}
 	<div class="${s.lottery}">

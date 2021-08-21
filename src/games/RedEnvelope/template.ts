@@ -83,11 +83,11 @@ export function renderGame(style, prizes, id) {
 	const gameResultAwardMsgStyle = inlineStyle(gameResultAwardMsg);
 	const gameResultMemoStyle = inlineStyle(gameResultMemo);
 	const ensureBtnStyle = inlineStyle(ensureBtn);
-	delete cover.height; // 考虑动画原因cave的height的定义将无效
+	if (cover) delete cover.height; // 考虑动画原因cave的height的定义将无效
 	const coverStyle = inlineStyle(cover);
 	const backCoverStyle = inlineStyle(backCover);
 
-	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
 	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 		${renderGameInfo(style, prizes, id)}
 		<div class="${s.redpack}" ${backCoverStyle ? `style="${backCoverStyle}"` : ''}>

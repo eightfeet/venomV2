@@ -1,53 +1,7 @@
 /* eslint-disable indent */
 window.themedata1 = {
     "GameTheme": {
-        "wrap": {
-            "zIndex": 10
-        },
-        "cardWrap": {
-            "padding": "0.4em"
-        },
-        "cardInside": {
-            "backgroundColor":'#4caf50',
-            "boxShadow": '5px 0 5px rgba(0,0,0,.1)',
-            "borderRadius": "0.2em"
-        },
-        "cardCover": {
-            "backgroundColor":'#fff',
-            "boxShadow": '5px 0 10px rgba(0,0,0,.1)',
-            "border": "1px solid #aaa",
-            "borderRadius": "0.2em"
-        },
-        "cardSelected": {
-            "backgroundColor":'#ffeb3b',
-            "boxShadow": '10px 10px 5px rgba(0,0,0,.1)',
-            "width": "108%",
-            "height": "108%",
-            "top": "-4%",
-            "left": "-4%",
-            "zIndex": "50"
-        },
-        "prizeImage": {
-
-        },
-        "prizeTitle": {
-            "textAlign": 'center'
-        },
-        "modify": [
-            {
-                top: "-1em",
-                left: "-5em",
-                height: "8em",
-                width: "10em",
-                backgroundColor: "rgba(255,0,0, 0.5)"
-            },
-            {
-                top: "2em",
-                height: "8em",
-                width: "20em",
-                backgroundColor: "rgba(0,255,0, 0.5)"
-            }
-        ]
+        
     },
     "FailedModalTheme": {
         "overlay": {
