@@ -20,7 +20,8 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
-import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<RouletteThemeType>;
 export type GameThemeType = GameTheme<RouletteThemeType>;
 export type GameConfigType = CoreConfigType<RouletteThemeType>;
 export type PrizeType = Prize;

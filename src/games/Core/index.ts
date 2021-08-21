@@ -210,15 +210,11 @@ class Core {
 		this.lotteryDrawing = true;
 		Promise.resolve()
 			.then(() => this.start())
-			.then((res) => {
-				return (
-					Promise.resolve()
-					// 处理抽奖过程
-						.then(() => this.startLottery(res))
-					// 处理抽奖过程结束
-						.then(() => dormancyFor(200).then(() => res))
-				);
-			})
+			.then((res) => Promise.resolve()
+			// 处理抽奖过程
+				.then(() => this.startLottery(res))
+			// 处理抽奖过程结束
+				.then(() => dormancyFor(200).then(() => res)))
 			.then((res) => {
 				this.lotteryDrawing = false;
 				if (res.prizeType === PrizeType.LosingLottery) {

@@ -10,27 +10,30 @@ export interface Modify {
   modify?: Properties[]
 }
 
-export type GameTheme<T> = StyleItem & Modify & T;
+export type GameTheme<T> = (StyleItem | Modify) & T;
 
-export interface ResultModalStyle extends ModalStyle {
-  /*
-   * 奖品别名
-   */
-  prizeAlias?: Properties;
-  prizeName?: Properties;
-  awardMsg?: Properties;
-  prizeImg?: Properties;
-  memo?: Properties;
+export interface NoticeModal {
+  overlay?: Properties;
+  wrap?: Properties;
+  close?: Properties;
+  content?: Properties;
   contentTop?: Properties;
   contentBottom?: Properties;
   submit?: Properties;
   header?: Properties;
   article?: Properties;
   footer?: Properties;
-  modalTitle?: Properties;
   contentWrap?: Properties;
 }
 
+export interface ResultModalStyle extends NoticeModal {
+  prizeAlias?: Properties;
+  prizeName?: Properties;
+  awardMsg?: Properties;
+  prizeImg?: Properties;
+  memo?: Properties;
+  modalTitle?: Properties;
+}
 
 export interface Theme<T> {
   /**
@@ -46,16 +49,20 @@ export interface Theme<T> {
    */
   AddressModalTheme?: AddressModalThemeType;
   /**
+   * 信息弹窗
+   */
+  NoticeModalTheme?: NoticeModal;
+  /**
    * loading皮肤
    */
   LoadingTheme?: {
-    overlay?: Properties;
-    content?: Properties;
-    vertices?: {
-        elements?: string[];
-        size?: string;
-    } & Properties;
-};
+      overlay?: Properties;
+      content?: Properties;
+      vertices?: {
+          elements?: string[];
+          size?: string;
+      } & Properties;
+  };
   /**
    * 失败弹窗
    */
@@ -65,7 +72,6 @@ export interface Theme<T> {
    */
   MessageTheme?: ModalStyle & Modify;
 }
-
 export interface CoreConfigType<T> {
   /**
    * GameId 默认game-target-时间戳+100以内随机数
@@ -83,8 +89,8 @@ export interface CoreConfigType<T> {
    * 皮肤配置
    */
   style: Theme<T>;
-  
-  outerFrameId: string;
+  /**core使用无需定义 */
+  outerFrameId?: string;
   /**
    * 启动抽奖方法 必填
    */
@@ -93,20 +99,20 @@ export interface CoreConfigType<T> {
    * 保存地址
    */
   saveAddress: (address: {
-    /** 详细地址 */
-    address: string;
-    /** 身份证号码 */
-    idcode?: string;
-    /** 收货人电话号码 */
-    phone: string;
-    /** 收货人姓名 */
-    receiver: string;
-    /** 省市区id */
-    regions: string;
-    /** 省市区名称 */
-    regionsName: string;
-    /** 验证码 */
-    verificationvode?: string | number;
+      /** 详细地址 */
+      address: string;
+      /** 身份证号码 */
+      idcode?: string;
+      /** 收货人电话号码 */
+      phone: string;
+      /** 收货人姓名 */
+      receiver: string;
+      /** 省市区id */
+      regions: string;
+      /** 省市区名称 */
+      regionsName: string;
+      /** 验证码 */
+      verificationvode?: string | number;
   }) => Promise<any>;
   /**
    * 奖品参数
@@ -135,19 +141,19 @@ export interface CoreConfigType<T> {
   /**
    * 确定时的回调（确定或完成填写地址后）
    */
-  onEnsure?: (prize:Prize) => void;
+  onEnsure?: (prize: Prize) => void;
   /**
    * 显示中奖
    */
-  onShowSuccess?: () => void,
+  onShowSuccess?: () => void;
   /**
    * 显示未中奖
    */
-  onShowFailed?: () => void,
+  onShowFailed?: () => void;
   /**
    * 显示地址弹窗
    */
-	onShowAddress?: () => void;
+  onShowAddress?: () => void;
   /**
    * 未中奖弹窗标题
    */
@@ -176,30 +182,30 @@ export interface CoreConfigType<T> {
    * loading 设置
    */
   loading?: {
-    /**
-     * loading 尺寸大小 默认20
-     */
-    size: number;
-    /**
-     * 由几个点（vertices）组成默认12个
-     */
-    length: number;
-    /**
-     * 旋转一周的周期时间，单位s
-     */
-    cycle: number;
+      /**
+       * loading 尺寸大小 默认20
+       */
+      size: number;
+      /**
+       * 由几个点（vertices）组成默认12个
+       */
+      length: number;
+      /**
+       * 旋转一周的周期时间，单位s
+       */
+      cycle: number;
   };
   /**
-   * 抽奖
+   * core抽奖方式,无需定义
+   * 抽奖的动画形式
    */
-  lottery: (prize:Prize) => Promise<any>;
+  lottery?: (prize: Prize) => Promise<any>;
 }
-
 /**
- * 游戏奖品数据结构
- * @export
- * @interface Prize
- */
+* 游戏奖品数据结构
+* @export
+* @interface Prize
+*/
 export interface Prize {
   /**
    * 奖品id
@@ -254,14 +260,13 @@ export interface Prize {
    * @type {string}
    * @memberof Prize
    */
-  memo?: string
+  memo?: string;
 }
-
 /**
- * 奖品类型
- * @export
- * @enum {number}
- */
+* 奖品类型
+* @export
+* @enum {number}
+*/
 export enum PrizeType {
   /**
    * 未中奖
@@ -274,14 +279,13 @@ export enum PrizeType {
   /**
    * 虚拟
    */
-  Virtual = 2,
+  Virtual = 2
 }
-
 /**
- * 领取方式
- * @export
- * @enum {number}
- */
+* 领取方式
+* @export
+* @enum {number}
+*/
 export enum ReceiveType {
   /**
    * 默认
@@ -298,10 +302,8 @@ export enum ReceiveType {
   /**
    * 虚拟卡
    */
-  Virtual = 4,
+  Virtual = 4
 }
-
-
 export enum cardIdRequest {
   /**
    * 隐藏身份证
@@ -318,7 +320,7 @@ export enum cardIdRequest {
   /**
    * 不验证身份证
    */
-  NeverValidation = "4",
+  NeverValidation = "4"
 }
 
 

@@ -5,7 +5,8 @@ if (window.Promise === undefined) {
 import Core from '../Core';
 import { Loading, htmlFactory, tools } from '@byhealth/walle';
 import s from './index.scss';
-import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<CaseTheme>;
 export type GameThemeType = GameTheme<CaseTheme>;
 export type GameConfigType = CoreConfigType<CaseTheme>;
 export type PrizeType = Prize;

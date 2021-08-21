@@ -11,7 +11,8 @@ import Swiper from 'swiper';
 import { Properties } from 'csstype';
 import 'swiper/swiper-bundle.css';
 
-import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<TreasureBoxThemeType>;
 export type GameThemeType = GameTheme<TreasureBoxThemeType>;
 export type GameConfigType = CoreConfigType<TreasureBoxThemeType>;
 export type PrizeType = Prize;

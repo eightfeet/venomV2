@@ -10,23 +10,54 @@ const { dormancyFor } = tools;
 const { createDom, inlineStyle } = htmlFactory;
 
 import { renderGame } from './template';
+import { Properties } from 'csstype';
+
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<DiceTheme>;
+export type GameThemeType = GameTheme<DiceTheme>;
+export type GameConfigType = CoreConfigType<DiceTheme>;
+export type PrizeType = Prize;
 
 const stamp = (new Date()).getTime();
 
 let timer = null;
 
+interface DiceTheme {
+  wrap?: Properties;
+  /**显示活动信息按钮 */
+  showGameInfoButton?: Properties;
+  /** 活动信息布局 */
+  gameInfoLayout?: Properties;
+  /** 活动信息外框 */
+  gameInfoWrap?: Properties;
+  /** 活动信息奖品单项 */
+  gameInfoPrizeItem?: Properties;
+  /** 活动信息单项图片 */
+  gameInfoPrizeImg?: Properties;
+  /** 活动信息奖品名称 */
+  gameInfoPrizeName?: Properties;
+  /** 对照标签 */
+  gameInfoPrizeTag?: Properties;
+  /** 骰子 */
+  dice?: Properties;
+  /** 骰子面 */
+  side?: Properties;
+  /** 骰子点 */
+  dot?: Properties;
+}
+
 class Game {
 	targetId: any;
 	emBase: any;
 	prizes: any;
-	GameTheme: any;
+	GameTheme: GameThemeType;
 	parentId: any;
 	core: Core;
 	Loading: any;
 	destroy: any;
 	oldDge: number;
 	activeElements: any;
-	constructor(config){
+	constructor(config: GameConfigType){
 		const { style, prizes, targetId, parentId, emBase } = config;
 		this.targetId = targetId || `game-target-${stamp}${window.Math.floor(window.Math.random() * 100)}`;
 		this.emBase = emBase;

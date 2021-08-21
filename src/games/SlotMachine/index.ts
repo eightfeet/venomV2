@@ -13,7 +13,8 @@ import { renderGame } from './template';
 import { handleGamePrizes } from './helper';
 import { Properties } from 'csstype';
 
-import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<SlotMachineTheme>;
 export type GameThemeType = GameTheme<SlotMachineTheme>;
 export type GameConfigType = CoreConfigType<SlotMachineTheme>;
 export type PrizeType = Prize;

@@ -22,7 +22,8 @@ import { renderGame } from "./template";
 import { Arr, KdShuffle } from "./helper";
 import { Properties } from "csstype";
 
-import { CoreConfigType, GameTheme, Prize } from './../../types/core';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+export type ThemeType = Theme<FlipCardTheme>;
 export type GameThemeType = GameTheme<FlipCardTheme>;
 export type GameConfigType = CoreConfigType<FlipCardTheme>;
 export type PrizeType = Prize;
@@ -39,6 +40,9 @@ interface FlipCardTheme {
 	cardCover?: Properties;
 	cardInside?: Properties;
 	cardWrap?: Properties;
+	prizeImage?: Properties;
+	prizeTitle?: Properties;
+	cardSelected?: Properties;
 }
 
 class Game {
