@@ -2,7 +2,7 @@ if (window.Promise === undefined) {
 	throw new Error('Promise pollyfill not found.');
 }
 
-import Game from './Case';
+import Game, { GameConfigType, GameThemeType, PrizeType, ThemeType } from './Case';
 import {
 	Loading,
 	AddressModal,
@@ -13,6 +13,13 @@ import {
 	htmlFactory
 } from '@byhealth/walle';
 const { inlineStyle } = htmlFactory;
+
+export {
+	ThemeType,
+	GameThemeType,
+	GameConfigType,
+	PrizeType
+};
 
 export {
 	Game,

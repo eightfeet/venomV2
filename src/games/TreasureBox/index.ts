@@ -2,7 +2,7 @@ if (window.Promise === undefined) {
 	throw new Error('Promise pollyfill not found.');
 }
 
-import Game from './TreasureBox';
+import Game, { GameConfigType, GameThemeType, ThemeType } from './TreasureBox';
 import {
 	Loading,
 	AddressModal,
@@ -12,7 +12,15 @@ import {
 	Modal,
 	htmlFactory
 } from '@byhealth/walle';
+import { Prize } from '~/types/core';
 const { inlineStyle } = htmlFactory;
+
+export {
+	ThemeType,
+	GameThemeType,
+	GameConfigType,
+	Prize
+};
 
 export {
 	Game,
