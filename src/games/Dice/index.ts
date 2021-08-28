@@ -44,6 +44,7 @@ interface DiceTheme {
   side?: Properties;
   /** 骰子点 */
   dot?: Properties;
+  [keys: string]: any;
 }
 
 class Game {

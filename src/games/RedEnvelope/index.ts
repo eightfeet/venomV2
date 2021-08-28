@@ -10,6 +10,40 @@ const { createDom, inlineStyle } = htmlFactory;
 const { onceTransitionEnd } = webAnimation;
 
 import { renderGame } from './template';
+import { CoreConfigType, GameTheme, Prize, Theme } from './../../types/core';
+import { Properties } from 'csstype';
+export type ThemeType = Theme<FlipCardTheme>;
+export type GameThemeType = GameTheme<FlipCardTheme>;
+export type GameConfigType = CoreConfigType<FlipCardTheme>;
+export type PrizeType = Prize;
+
+interface FlipCardTheme {
+	/**外框 */
+	wrap?: Properties;
+	/**封面 */
+	cover?: Properties;
+	/**封底 */
+	backCover?: Properties;
+	/**封面文字 */
+	coverTexts?: Properties;
+	/**封面标题 */
+	coverTitle?: Properties;
+	/**封面次标题 */
+	coverSubTitle?: Properties;
+	/**游戏结果 */
+	gameResult?: Properties;
+	/**奖品名称 */
+	gameResultPrizename?: Properties;
+	/**获奖信息 */
+	gameResultAwardMsg?: Properties;
+	/**奖品备注 */
+	gameResultMemo?: Properties;
+	/**确定操作按钮 */
+	ensureBtn?: Properties;
+	/**开始按钮 */
+	startButton?: Properties;
+	[keys: string]: any;
+}
 
 const stamp = (new Date()).getTime();
 

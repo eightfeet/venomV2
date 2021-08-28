@@ -22,12 +22,19 @@ export type PrizeType = Prize;
 const stamp = (new Date()).getTime();
 
 interface BoxRouletteTheme {
+	/**外框 */
 	wrap?: Properties;
+	/**奖品 */
 	prize?: Properties;
+	/**奖品图片 */
 	gameImg?: Properties;
+	/**奖品别名 */
 	prizeAlias?: Properties;
+	/**激活 */
 	activated?: Properties;
+	/**抽奖按钮 */
 	lotteryButton?: Properties;
+	[keys: string]: any;
 }
 
 class Game {

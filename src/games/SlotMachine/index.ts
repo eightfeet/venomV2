@@ -24,17 +24,13 @@ const stamp = (new Date()).getTime();
 let gameTimer = null;
 
 interface SlotMachineTheme {
-	gamePrizeName?: Properties;
-	gamePrizeImg?: Properties;
-	gameItem?: Properties;
-	game?: Properties;
-	gameInfoPrizeImg?: Properties;
-	gameInfoPrizeName?: Properties;
+	wrap?: Properties;
+	startButton?: Properties;
 	showGameInfoButton?: Properties;
-	gameInfoWrap?: Properties;
-	gameInfoContent?: Properties;
-	gameInfoLayout?: Properties;
-	gameInfoPrizeItem?: Properties;
+	gameItem?: Properties;
+	gamePrizeImg?: Properties;
+	game?: Properties;
+	[keys: string]: any;
   }
   
 

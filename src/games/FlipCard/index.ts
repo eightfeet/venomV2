@@ -36,13 +36,21 @@ let oldStyle = null;
 const stamp = new Date().getTime();
 
 interface FlipCardTheme {
+	/**外框 */
 	wrap?: Properties;
+	/**卡牌封面 */
 	cardCover?: Properties;
+	/**卡牌底面 */
 	cardInside?: Properties;
+	/**卡牌外框 */
 	cardWrap?: Properties;
+	/**奖品图片 */
 	prizeImage?: Properties;
+	/**奖品标题 */
 	prizeTitle?: Properties;
+	/**抽中卡牌 */
 	cardSelected?: Properties;
+	[keys: string]: any;
 }
 
 class Game {

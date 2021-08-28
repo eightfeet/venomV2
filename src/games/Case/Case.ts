@@ -19,7 +19,7 @@ const stamp = new Date().getTime();
 let gameTimer = null;
 
 interface CaseTheme {
-
+	[keys: string]: any;
 }
 
 class Case {
@@ -62,7 +62,7 @@ class Case {
 	renderGame = async () => {
 		this.gamePrizes = this.prizes;
 		await createDom(
-			`<button class="${s.startbtn} ${this.targetId}_button">抽奖</button>`,
+			`<button class="${s.startbtn} ${this.targetId}_button game_lottery_button">抽奖</button>`,
 			this.targetId,
 			this.parentId,
 			this.emBase

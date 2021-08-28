@@ -37,6 +37,7 @@ interface RouletteThemeType {
 	lotteryButton?: Properties;
 	wheel?: Properties;
 	divide?: Properties;
+	[keys: string]: any;
 }
 
 

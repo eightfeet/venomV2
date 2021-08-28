@@ -27,6 +27,7 @@ interface TreasureBoxThemeType {
 	wrap?: Properties;
 	prizeImage?: Properties;
 	prizeTitle?: Properties;
+	[keys: string]: any;
 }
 
 class TreasureBox {
