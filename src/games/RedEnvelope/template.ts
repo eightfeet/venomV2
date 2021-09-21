@@ -87,34 +87,34 @@ export function renderGame(style, prizes, id) {
 	const coverStyle = inlineStyle(cover);
 	const backCoverStyle = inlineStyle(backCover);
 
-	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
-	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap} ${id}_modifywrap">${renderModify(modify)}</div>` : ''} 
+	<div class="${s.wrap} ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 		${renderGameInfo(style, prizes, id)}
-		<div class="${s.redpack}" ${backCoverStyle ? `style="${backCoverStyle}"` : ''}>
-			<div class="${s.redpackopen}" ${gameResultBackCoverStyle ? `style="${gameResultBackCoverStyle}"` : ''}></div>
-			<div class="${s.topcontent}" ${coverStyle ? `style="${coverStyle}"` : ''}>
-				<div class="${s.info}" ${coverTextsStyle ? `style="${coverTextsStyle}"` : ''}>
-					<div class="${s.subtitle}" ${coverSubTitleStyle ? `style="${coverSubTitleStyle}"` : ''}>开启您的红包</div>
-					<div class="${s.title}" ${coverTitleStyle ? `style="${coverTitleStyle}"` : ''}>恭喜发财，大吉大利</div>
+		<div class="${s.redpack} ${id}_redpack" ${backCoverStyle ? `style="${backCoverStyle}"` : ''}>
+			<div class="${s.redpackopen} ${id}_redpackopen" ${gameResultBackCoverStyle ? `style="${gameResultBackCoverStyle}"` : ''}></div>
+			<div class="${s.topcontent} ${id}_topcontent" ${coverStyle ? `style="${coverStyle}"` : ''}>
+				<div class="${s.info} ${id}_info" ${coverTextsStyle ? `style="${coverTextsStyle}"` : ''}>
+					<div class="${s.subtitle} ${id}_subtitle" ${coverSubTitleStyle ? `style="${coverSubTitleStyle}"` : ''}>开启您的红包</div>
+					<div class="${s.title} ${id}_title" ${coverTitleStyle ? `style="${coverTitleStyle}"` : ''}>恭喜发财，大吉大利</div>
 				</div>
-				<div class="${s.result} ${s.hide}" ${gameResultStyle ? `style="${gameResultStyle}"` : ''}>
-					<div class="${s.gameprizename}" ${gameResultPrizenameStyle ? `style="${gameResultPrizenameStyle}"` : ''}>
+				<div class="${s.result} ${s.hide} ${id}_result" ${gameResultStyle ? `style="${gameResultStyle}"` : ''}>
+					<div class="${s.gameprizename} ${id}_gameprizename" ${gameResultPrizenameStyle ? `style="${gameResultPrizenameStyle}"` : ''}>
 					</div>
-					<div class="${s.gameawardmsg}" ${gameResultAwardMsgStyle ? `style="${gameResultAwardMsgStyle}"` : ''}>
+					<div class="${s.gameawardmsg} ${id}_gameawardmsg" ${gameResultAwardMsgStyle ? `style="${gameResultAwardMsgStyle}"` : ''}>
 					</div>
 				</div>
-                <div class="${s.actionbox}">
-                    <div class="${s.startbutton}" ${startButtonStyle ? `style="${startButtonStyle}"` : ''}>开始</div>
+                <div class="${s.actionbox} ${id}_actionbox">
+                    <div class="${s.startbutton} ${id}_startbutton" ${startButtonStyle ? `style="${startButtonStyle}"` : ''}>开始</div>
 				</div>
 			</div>
-			<div class="${s.resultcontent}">
-				<div class="${s.gameprize} ${s.hide}">
+			<div class="${s.resultcontent} ${id}_resultcontent">
+				<div class="${s.gameprize} ${s.hide} ${id}_gameprize">
 				</div>
-				<div class="${s.memo} ${s.hide}" ${gameResultMemoStyle ? `style="${gameResultMemoStyle}"` : ''}>
+				<div class="${s.memo} ${s.hide} ${id}_memo" ${gameResultMemoStyle ? `style="${gameResultMemoStyle}"` : ''}>
 				</div>
-				<div class="${s.ensure} ${s.hide}" id="${id}-ensure" ${ensureBtnStyle ? `style="${ensureBtnStyle}"` : ''}>
+				<div class="${s.ensure} ${s.hide} ${id}_ensure" id="${id}-ensure" ${ensureBtnStyle ? `style="${ensureBtnStyle}"` : ''}>
 				</div>
-				<div class="${s.reset} ${s.hide}" id="${id}-reset">
+				<div class="${s.reset} ${s.hide} ${id}_reset" id="${id}-reset">
 				</div>
 			</div>
         </div>   

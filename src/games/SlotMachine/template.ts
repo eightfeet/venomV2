@@ -57,7 +57,7 @@ function renderGameInfo(style, prizes, id) {
 	</div>`;
 }
 
-function renderGamePrize(style, prizes: Prize[]) {
+function renderGamePrize(style, prizes: Prize[], id: string) {
 	let dom = '';
 	const { gamePrizeName, gamePrizeImg, gameItem, game} = style;
 	const gamePrizeNameStyle = inlineStyle(gamePrizeName);
@@ -67,16 +67,16 @@ function renderGamePrize(style, prizes: Prize[]) {
 
 	for (let index = 0; index < prizes.length; index++) {
 		const element = prizes[index];
-		dom += `<div class="${s.gameitem}" style="height:${(1 / prizes.length) * 100}%;">
-			<div ${gameItemStyle ? `style="${gameItemStyle}"` : ''}>
-				<img ${gamePrizeImgStyle ? `style="${gamePrizeImgStyle}"` : ''} src="${element.gameImg || element.prizeImg}" />
-				<p ${gamePrizeNameStyle ? `style="${gamePrizeNameStyle}"` : ''} style="position: absolute; top:0">${element.prizeAlias || element.prizeName}</p>
+		dom += `<div class="${s.gameitem} ${id}_gameitem_wrap" style="height:${(1 / prizes.length) * 100}%;">
+			<div ${gameItemStyle ? `style="${gameItemStyle}"` : ''} class="${id}_gameitem">
+				<img ${gamePrizeImgStyle ? `style="${gamePrizeImgStyle}"` : ''} src="${element.gameImg || element.prizeImg}" class="${id}_gameimg" />
+				<p ${gamePrizeNameStyle ? `style="${gamePrizeNameStyle}"` : ''} style="position: absolute; top:0" class="${id}_prizealias">${element.prizeAlias || element.prizeName}</p>
 			</div>
 		</div>`;
 	}
 
-	return `<div class="${s.game}" ${gameStyle ? `style="${gameStyle}"` : ''}>
-		<div class="${s.slotwrap}">
+	return `<div class="${s.game} ${id}_game" ${gameStyle ? `style="${gameStyle}"` : ''}>
+		<div class="${s.slotwrap} ${id}_gamewrap">
 			${dom}
 		</div>
 	</div>`;
@@ -98,7 +98,7 @@ export function renderGame(style, gamePrizes: Prize[], prizes: Prize[], id: stri
 	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
 	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 		${renderGameInfo(style, prizes, id)}
-		${renderGamePrize(style, gamePrizes)}
+		${renderGamePrize(style, gamePrizes, id)}
 	</div>
 	<div class="${s.startbtn}" ${startButtonStyle ? `style="${startButtonStyle}"` : ''}>开始游戏</div>`;
 }

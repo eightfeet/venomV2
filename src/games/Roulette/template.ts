@@ -66,7 +66,7 @@ export function renderGame(style, prizes, id) {
 		<div class="${s.divide} ${id}_divide"  style="transform:rotate(${deg}deg); -webkit-transform:rotate(${deg}deg); ${divideStyle ? divideStyle : ''}"></div>`;
 	}
 
-	return `${modify?.length ? `<div class="${s.modifywrap} ${id}_wrap">${renderModify(modify, id)}</div>` : ''} 
+	return `${modify?.length ? `<div class="${s.modifywrap} ${id}_modifywrap">${renderModify(modify, id)}</div>` : ''} 
 		<div class="${s.wrap}  ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 			<div class="${s.lottery} ${id}_lottery">
 				<div class="${s.wheel} ${id}_wheel"  ${wheelStyle ? `style="${wheelStyle}"` : ''}>

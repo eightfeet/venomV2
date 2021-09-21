@@ -130,7 +130,8 @@ class Game {
 		await createDom(
 			renderGame(
 				this.GameTheme,
-				this.prizes.length > 6 ? this.prizes.slice(0, 6) : this.prizes
+				this.prizes.length > 6 ? this.prizes.slice(0, 6) : this.prizes,
+				this.targetId
 			),
 			this.targetId,
 			this.parentId,

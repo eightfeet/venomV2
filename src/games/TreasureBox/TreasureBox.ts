@@ -73,7 +73,7 @@ class TreasureBox {
 			renderGame({
 				prizes: this.gamePrizes,
 				theme: this.GameTheme
-			}),
+			}, this.targetId),
 			this.targetId,
 			this.parentId,
 			this.emBase

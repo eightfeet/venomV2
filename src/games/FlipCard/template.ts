@@ -34,19 +34,19 @@ function renderModify(modify: Properties[]): string{
  * @param { Array } prizes 奖项
  * @returns
  */
-export function renderGame(style, prizes: Prize[]) {
+export function renderGame(style, prizes: Prize[], id: string) {
 	
 	const { wrap, cardCover, cardInside, cardWrap, modify } = style;
 	const prizeLength = prizes.length;
 	let dom = '';
 	for (let index = 0; index < prizeLength; index++) {
 		const element = prizes[index];
-		dom += `<div class="${s.item}" style="${cardWrap && inlineStyle(cardWrap)}">
-            <div class="${s.flipper}" data-index="${index}">
-                <div class="${s.front}" style="background-image: url(${element.gameImg}); ${cardInside && inlineStyle(cardInside)}">&nbsp;</div>
-                <div class="${s.back}" style="${cardCover && inlineStyle(cardCover)}">&nbsp;</div>
+		dom += `<div class="${s.item} ${id}_item" style="${cardWrap && inlineStyle(cardWrap)}">
+            <div class="${s.flipper} ${id}_flipper" data-index="${index}">
+                <div class="${s.front} ${id}_front" style="background-image: url(${element.gameImg}); ${cardInside && inlineStyle(cardInside)}">&nbsp;</div>
+                <div class="${s.back} ${id}_back" style="${cardCover && inlineStyle(cardCover)}">&nbsp;</div>
             </div>
       </div>`;
 	}
-	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap}" style="${wrap && inlineStyle(wrap)}">${dom}</div>`;
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap} ${id}_modifywrap">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap}" style="${wrap && inlineStyle(wrap)}">${dom}</div>`;
 }

@@ -5,7 +5,7 @@ import s from './index.scss';
 import { Properties } from 'csstype';
 const { inlineStyle } = htmlFactory;
 
-export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
+export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}, id: string ) => {
 	const { wrap, prizeImage, prizeTitle, modify } = theme;
 	const wrapStyle = inlineStyle(wrap) || '';
 	const prizeImageStyle = inlineStyle(prizeImage) || '';
@@ -14,8 +14,8 @@ export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
 	const prizesFliter = prizes.filter((item:Prize) => item.prizeType !== PrizeType.LosingLottery);
 
 	return html`
-        <div class="${s.root}" style="${wrapStyle}">
-            <div class="${prizesFliter.length > 4 ? s.prizebox : s.fixprizebox}">
+        <div class="${s.root} ${id}_wrap" style="${wrapStyle}">
+            <div class="${prizesFliter.length > 4 ? s.prizebox : s.fixprizebox} ${id}_prizebox">
                 <div class="${prizesFliter.length > 4 ? 'swiper-wrapper' : s.prizes}">
                     ${prizesFliter.map(
 		(item: Prize, index: number) =>
@@ -24,21 +24,22 @@ export const renderGame = ({ prizes, theme }:{ prizes: any[], theme: any}) => {
 		? 'swiper-slide'
 		: ''} ${s.item}"
                             >
-                                <div class="${s.imgwrap} ${index === 0 ? s.firstimgwrap : ''}">
+                                <div class="${s.imgwrap} ${index === 0 ? s.firstimgwrap : ''} ${id}_imgwrap">
                                     <img
                                         style="${prizeImageStyle}"
+                                        class="${id}_gameImg"
                                         src="${item.gameImg}"
                                     />
                                 </div>
-                                <p style="${prizeTitleStyle} width:${7.5}em">
+                                <p style="${prizeTitleStyle} width:${7.5}em" class="${id}_prizeAlias">
                                     ${item.prizeAlias}
                                 </p>
                             </div>`
 	)}
                 </div>
             </div>
-            <div class="${s.btnwrap}"><div class="${s.startbtn}"></div></div>
-            <div class="${s.box}"></div>
+            <div class="${s.btnwrap}"><div class="${s.startbtn} ${id}_startbtn"></div></div>
+            <div class="${s.box} ${id}_box"></div>
             ${renderModify(modify)}
         </div>
     `;
