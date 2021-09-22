@@ -54,7 +54,7 @@ function renderGameInfo(style, prizes, id) {
 	return `<div class="${s.toggleprize}" ${showGameInfoButtonStyle ? `style="${showGameInfoButtonStyle}"` : ''}>
 		奖品
 	</div>
-	<div id="${id}-info" class="${s.prizeslayout}"" ${gameInfoLayoutStyle ? `style="${gameInfoLayoutStyle}"` : ''}>
+	<div id="${id}-info" class="${s.prizeslayout}" ${gameInfoLayoutStyle ? `style="${gameInfoLayoutStyle}"` : ''}>
 		<div class="${s.prizeswrap}" ${gameInfoWrapStyle ? `style="${gameInfoWrapStyle}"` : ''}>
 			<div class="${s.gameinfo}" ${gameInfoContentStyle ? `style="${gameInfoContentStyle}"` : ''}>${dom}</div>
 		</div>
@@ -80,56 +80,56 @@ export function renderGame(style, prizes, id) {
 	let dom = `
 	<div class="${s.ui_dado}">
 		<div class="${s.platform}">
-			<div class="${s.dice}" style="width:35%; height:35%; ${diceStyle || ''}">
-				<div style="${sideStyle}" class="${s.side} ${s.front}">
-					<div style="${dotStyle}" class="${s.dot} ${s.center}"></div>
+			<div class="${s.dice}  ${id}_dice" style="${diceStyle || ''}">
+				<div style="${sideStyle}" class="${s.side} ${s.front} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.center} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.front} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.top}">
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.front} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.top} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.top} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.right}">
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.center}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.top} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.right} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.center} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.right} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.left}">
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.right} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.left} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.left} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.bottom}">
-					<div style="${dotStyle}" class="${s.dot} ${s.center}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.left} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.bottom} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.center} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.bottom} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.back}">
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.center} ${s.dleft}"></div>
-					<div style="${dotStyle}" class="${s.dot} ${s.center} ${s.dright}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.bottom} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.back} ${id}_side">
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dtop} ${s.dright} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.dbottom} ${s.dright} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.center} ${s.dleft} ${id}_dot"></div>
+					<div style="${dotStyle}" class="${s.dot} ${s.center} ${s.dright} ${id}_dot"></div>
 				</div>
-				<div style="${sideStyle}" class="${s.side} ${s.back} ${s.inner}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.x}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.y}"></div>
-				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.z}"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.back} ${s.inner} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.x} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.y} ${id}_side"></div>
+				<div style="${sideStyle}" class="${s.side} ${s.cover} ${s.z} ${id}_side"></div>
 			</div>
 		</div>
 	</div>
 	`;
 
 	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
-	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
+	<div class="${s.wrap} ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 	${renderGameInfo(style, prizes, id)}
 	<div class="${s.lottery}">
 		${dom}

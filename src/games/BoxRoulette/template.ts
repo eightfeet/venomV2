@@ -4,7 +4,6 @@ const { inlineStyle } = htmlFactory;
 import { getFullNum } from './helper';
 import { Properties } from 'csstype';
 
-
 /**
  *
  * 创建修饰层
@@ -55,12 +54,12 @@ export function renderGame(style, prizes, id) {
 
 	for (let index = 0; index < prizes.length; index++) {
 		const element = prizes[index];
-		dom = `${dom}<div class="${s.prizeItem}" style="width:${step}%; height:${step}%; left: ${X}%; top: ${Y}%"><div class="${s.prize}" ${prizeStyle && `style="${prizeStyle}"`}>
-			<div class="${s.selected}">
+		dom = `${dom}<div class="${s.prizeItem} ${id}_prizeItem" style="width:${step}%; height:${step}%; left: ${X}%; top: ${Y}%"><div class="${s.prize}" ${prizeStyle && `style="${prizeStyle}"`}>
+			<div class="${s.selected} ${id}_selected">
 				<div ${activatedStyle && `style="${activatedStyle}"`}> </div>
 			</div>
-			<img class="${s.gameimg}" ${gameImgStyle && `style="${gameImgStyle}"`} src="${element.gameImg}" />
-			<div class="${s.prizealias}" ${prizeAliasStyle && `style="${prizeAliasStyle}"`}>${element.prizeAlias}</div>
+			<img class="${s.gameimg} ${id}_gameimg" ${gameImgStyle && `style="${gameImgStyle}"`} src="${element.gameImg}" />
+			<div class="${s.prizealias} ${id}_prizealias" ${prizeAliasStyle && `style="${prizeAliasStyle}"`}>${element.prizeAlias}</div>
 		</div></div>`;
 
 		if (stepGrown === 1) {
@@ -100,10 +99,10 @@ export function renderGame(style, prizes, id) {
 	}
 
 	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
-	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
-	<div id="${id}" class="${s.lottery}">
+	<div class="${s.wrap} ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
+	<div id="${id}" class="${s.lottery} ${id}_lottery">
 		${dom}
 	</div>
-	<div class="${s.lotterybutton}" ><div class="${s.button}" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div></div>
+	<div class="${s.lotterybutton} ${id}_lotterybuttonwrap" ><div class="${s.button}  ${id}_lotterybutton" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div></div>
 	</div>`;
 }
