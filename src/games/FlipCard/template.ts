@@ -41,12 +41,12 @@ export function renderGame(style, prizes: Prize[], id: string) {
 	let dom = '';
 	for (let index = 0; index < prizeLength; index++) {
 		const element = prizes[index];
-		dom += `<div class="${s.item} ${id}_item" style="${cardWrap && inlineStyle(cardWrap)}">
+		dom += `<div class="${s.item} ${id}_item" style="${cardWrap ? inlineStyle(cardWrap) : ''}">
             <div class="${s.flipper} ${id}_flipper" data-index="${index}">
-                <div class="${s.front} ${id}_front" style="background-image: url(${element.gameImg}); ${cardInside && inlineStyle(cardInside)}">&nbsp;</div>
-                <div class="${s.back} ${id}_back" style="${cardCover && inlineStyle(cardCover)}">&nbsp;</div>
+                <div class="${s.front} ${id}_front" style="background-image: url(${element.gameImg}); ${cardInside ? inlineStyle(cardInside) : ''}">&nbsp;</div>
+                <div class="${s.back} ${id}_back" style="${cardCover ? inlineStyle(cardCover) : ''}">&nbsp;</div>
             </div>
       </div>`;
 	}
-	return `${modify?.length > 0 ? `<div class="${s.modifywrap} ${id}_modifywrap">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap}" style="${wrap && inlineStyle(wrap)}">${dom}</div>`;
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap} ${id}_modifywrap">${renderModify(modify)}</div>` : ''} <div id="flipcardwrap" class="${s.wrap} ${id}_wrap" style="${wrap ? inlineStyle(wrap) : ''}">${dom}</div>`;
 }

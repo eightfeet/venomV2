@@ -226,11 +226,11 @@ class Game {
 			const element = newPrizeArr[index];
 			game
 				.querySelector(`.${s.wrap}`)
-				.children[index].querySelector(`.${s.back}`).innerHTML = `<div style="${prizeImage && inlineStyle(prizeImage)
+				.children[index].querySelector(`.${s.back}`).innerHTML = `<div class="${this.targetId}_prizeImg" style="${prizeImage ? inlineStyle(prizeImage) : ''
 				}">
 				<img src="${element.prizeImg}" />
 			</div>
-			<div style="${prizeTitle && inlineStyle(prizeTitle)}">
+			<div class="${this.targetId}_prizeAlias" style="${prizeTitle ? inlineStyle(prizeTitle) : ''}">
 				${element.prizeAlias}
 			</div>`;
 		}
@@ -240,7 +240,7 @@ class Game {
 			oldStyle = prizeDom.getAttribute("style");
 			prizeDom.setAttribute(
 				"style",
-				`${oldStyle}; ${cardSelected && inlineStyle(cardSelected)}`
+				`${oldStyle}; ${cardSelected ? inlineStyle(cardSelected) : ''}`
 			);
 		}
 	};
