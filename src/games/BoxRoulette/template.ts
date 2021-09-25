@@ -54,13 +54,15 @@ export function renderGame(style, prizes, id) {
 
 	for (let index = 0; index < prizes.length; index++) {
 		const element = prizes[index];
-		dom = `${dom}<div class="${s.prizeItem} ${id}_prizeItem" style="width:${step}%; height:${step}%; left: ${X}%; top: ${Y}%"><div class="${s.prize}" ${prizeStyle && `style="${prizeStyle}"`}>
-			<div class="${s.selected} ${id}_selected_wrap">
-				<div class="${id}_selected" ${activatedStyle ? `style="${activatedStyle}"` : ''}> </div>
+		dom = `${dom}<div class="${s.prizeItem} ${id}_prizeItem_wrap" style="width:${step}%; height:${step}%; left: ${X}%; top: ${Y}%">
+			<div class="${s.prize} ${id}_prizeItem" ${prizeStyle ? `style="${prizeStyle}"` : ''}>
+				<div class="${s.selected} ${id}_selected_wrap">
+					<div class="${s.selectedcurrent} ${id}_selected" ${activatedStyle ? `style="${activatedStyle}"` : ''}> </div>
+				</div>
+				<img class="${s.gameimg} ${id}_gameimg" ${gameImgStyle ? `style="${gameImgStyle}"` : ''} src="${element.gameImg}" />
+				<div class="${s.prizealias} ${id}_prizealias" ${prizeAliasStyle ? `style="${prizeAliasStyle}"` : ''}>${element.prizeAlias}</div>
 			</div>
-			<img class="${s.gameimg} ${id}_gameimg" ${gameImgStyle ? `style="${gameImgStyle}"` : ''} src="${element.gameImg}" />
-			<div class="${s.prizealias} ${id}_prizealias" ${prizeAliasStyle ? `style="${prizeAliasStyle}"` : ''}>${element.prizeAlias}</div>
-		</div></div>`;
+		</div>`;
 
 		if (stepGrown === 1) {
 			X = X + step;
@@ -103,6 +105,8 @@ export function renderGame(style, prizes, id) {
 	<div id="${id}" class="${s.lottery} ${id}_lottery">
 		${dom}
 	</div>
-	<div class="${s.lotterybutton} ${id}_lotterybuttonwrap" ><div class="${s.button}  ${id}_lotterybutton" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div></div>
+	<div class="${s.lotterybutton} ${id}_lotterybuttonwrap" >
+		<div class="${s.button}  ${id}_lotterybutton" ${lotteryButtonStyle ? `style="${lotteryButtonStyle}"` : ''}>&nbsp;</div>
+	</div>
 	</div>`;
 }
