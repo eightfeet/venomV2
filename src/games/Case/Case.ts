@@ -70,7 +70,7 @@ class Case {
 		this.target = document.getElementById(this.targetId);
 		await dormancyFor(50);
 		const startbtn: HTMLButtonElement = this.target.querySelector(
-			`.${s.startbtn}`
+			`.${this.targetId}_button`
 		);
 		startbtn.onclick = (e) => {
 			e.preventDefault();
