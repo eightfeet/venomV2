@@ -62,7 +62,7 @@ class Case {
 	renderGame = async () => {
 		this.gamePrizes = this.prizes;
 		await createDom(
-			`<button class="${s.startbtn} ${this.targetId}_button game_lottery_button">抽奖</button>`,
+			`<button class="${this.targetId}_button game_lottery_button">抽奖</button>`,
 			this.targetId,
 			this.parentId,
 			this.emBase
