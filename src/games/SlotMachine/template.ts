@@ -96,9 +96,9 @@ export function renderGame(style, gamePrizes: Prize[], prizes: Prize[], id: stri
 	const startButtonStyle = inlineStyle(startButton);
 
 	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
-	<div class="${s.wrap}" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
+	<div class="${s.wrap} ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 		${renderGameInfo(style, prizes, id)}
 		${renderGamePrize(style, gamePrizes, id)}
 	</div>
-	<div class="${s.startbtn}" ${startButtonStyle ? `style="${startButtonStyle}"` : ''}>开始游戏</div>`;
+	<div class="${s.startbtn} ${id}_startbtn" ${startButtonStyle ? `style="${startButtonStyle}"` : ''}>开始游戏</div>`;
 }
