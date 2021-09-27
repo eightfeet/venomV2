@@ -1,6 +1,6 @@
 {
   "name": "@byhealth/lottery",
-  "version": "1.2.33",
+  "version": "1.2.34",
   "description": "",
   "scripts": {
     "build": "rm -rf ./dist && webpack --mode=production",
