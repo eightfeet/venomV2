@@ -43,7 +43,9 @@ export function renderGame(style, prizes: Prize[], id: string) {
 		const element = prizes[index];
 		dom += `<div class="${s.item} ${id}_item" style="${cardWrap ? inlineStyle(cardWrap) : ''}">
             <div class="${s.flipper} ${id}_flipper" data-index="${index}">
-                <div class="${s.front} ${id}_front" style="background-image: url(${element.gameImg}); ${cardInside ? inlineStyle(cardInside) : ''}">&nbsp;</div>
+                <div class="${s.front}" style="background-image: url(${element.gameImg}); ${cardInside ? inlineStyle(cardInside) : ''}">
+					<div class="${id}_front" style="width: 100%; height: 100%;"></div>
+				</div>
                 <div class="${s.back} ${id}_back" style="${cardCover ? inlineStyle(cardCover) : ''}">&nbsp;</div>
             </div>
       </div>`;
