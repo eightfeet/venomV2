@@ -51,9 +51,7 @@ function renderGameInfo(style, prizes, id) {
 		</div>`;
 	}
 
-	return `<div class="${s.toggleprize}" ${showGameInfoButtonStyle ? `style="${showGameInfoButtonStyle}"` : ''}>
-		奖品
-	</div>
+	return `<div class="${s.toggleprize}" ${showGameInfoButtonStyle ? `style="${showGameInfoButtonStyle}"` : ''}></div>
 	<div id="${id}-info" class="${s.prizeslayout}" ${gameInfoLayoutStyle ? `style="${gameInfoLayoutStyle}"` : ''}>
 		<div class="${s.prizeswrap}" ${gameInfoWrapStyle ? `style="${gameInfoWrapStyle}"` : ''}>
 			<div class="${s.gameinfo}" ${gameInfoContentStyle ? `style="${gameInfoContentStyle}"` : ''}>${dom}</div>
