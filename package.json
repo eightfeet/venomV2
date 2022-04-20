@@ -1,6 +1,6 @@
 {
   "name": "@byhealth/lottery",
-  "version": "1.2.36",
+  "version": "1.2.38",
   "description": "",
   "scripts": {
     "build": "rm -rf ./dist && webpack --mode=production",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@byhealth/walle": "^1.0.26",
+    "@eightfeet/modal": "^2.2.27",
     "@types/common-tags": "^1.8.0",
     "common-tags": "^1.8.0",
     "core-js": "^3.2.1",
