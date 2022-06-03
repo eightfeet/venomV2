@@ -1,6 +1,6 @@
 {
   "name": "@byhealth/lottery",
-  "version": "1.2.38",
+  "version": "1.2.39",
   "description": "",
   "scripts": {
     "build": "rm -rf ./dist && webpack --mode=production",
@@ -15,8 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@byhealth/walle": "^1.0.26",
-    "@eightfeet/modal": "^2.2.27",
+    "@byhealth/walle": "^1.0.28",
+    "@eightfeet/modal": "^2.2.30",
     "@types/common-tags": "^1.8.0",
     "common-tags": "^1.8.0",
     "core-js": "^3.2.1",
@@ -54,11 +54,11 @@
     "html-webpack-plugin": "^3.2.0",
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.9.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.52.2",
+    "sass-loader": "^7.3.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "ttypescript": "^1.5.12",

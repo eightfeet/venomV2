@@ -2,7 +2,7 @@ let fontSize = '';
 (function(doc, win) {
 	const UI = {
 		width: 750,
-		baseonFontsize: 31
+		baseonFontsize: 31.25
 	};
 	
 	let docEl = doc.documentElement,
