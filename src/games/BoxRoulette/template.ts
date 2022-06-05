@@ -42,7 +42,7 @@ export function renderGame(style, prizes, id) {
 	const lotteryButtonStyle = inlineStyle(lotteryButton);
 	const wrapStyle = inlineStyle(wrap);
 	const activatedStyle = inlineStyle(activated);
-
+	
 	let sideLength = getFullNum((prizes.length - 4) / 4 + 2);
 	let step = getFullNum(100 / sideLength);
 	let maxRate = getFullNum((sideLength - 1) * step);
@@ -100,7 +100,7 @@ export function renderGame(style, prizes, id) {
 		}
 	}
 
-	return `${modify.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
+	return `${modify?.length > 0 ? `<div class="${s.modifywrap}">${renderModify(modify)}</div>` : ''} 
 	<div class="${s.wrap} ${id}_wrap" ${wrapStyle ? `style="${wrapStyle}"` : ''}>
 	<div id="${id}" class="${s.lottery} ${id}_lottery">
 		${dom}
