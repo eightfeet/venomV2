@@ -2,7 +2,7 @@ const configs = require('../config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const scripts = function (params) {
-	return `<script src="https://by-health-cdn.oss-cn-beijing.aliyuncs.com/region/regions.js"></script>
+	return `<script src="https://upload-yyj.by-health.com/upload/files/0823100534275_regions.js"></script>
 	<script src="./../data/${params}/prizes1.js"></script>
 	<script src="./../data/${params}/prizes2.js"></script>
 	<script src="./../data/${params}/themedata1.js"></script>
